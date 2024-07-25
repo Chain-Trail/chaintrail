@@ -152,7 +152,10 @@ const updateNextClaimTime = (nextClaimTime) => {
           {registrationStatus} {userInfo.username || "N/A"}
         </p>
         <div>Points: {userPoints}</div>
-        <button onClick={claimDailyReward} disabled={!canClaimReward}>
+        <button
+          className="my-4 text-center border bg-yellow-800 text-white block p-2 rounded-lg hover:bg-yellow-700 cursor-pointer"
+          onClick={claimDailyReward}
+          disabled={!canClaimReward}>
           {canClaimReward
             ? "Claim Daily Reward"
             : `Next claim in ${timeUntilNextClaim || "Loading..."}`}
