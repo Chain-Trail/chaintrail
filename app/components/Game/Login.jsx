@@ -5,6 +5,9 @@ import { useEffect, useState } from "react";
 export default function Login() {
   const [userInfo, setUserInfo] = useState(null);
   const [registrationStatus, setRegistrationStatus] = useState("");
+  const [userPoints, setUserPoints] = useState(0);
+  const [canClaimReward, setCanClaimReward] = useState(false);
+  const [timeUntilNextClaim, setTimeUntilNextClaim] = useState(null);
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -36,11 +39,30 @@ export default function Login() {
       });
       const data = await response.json();
       setRegistrationStatus(data.message);
+      setUserPoints(data.points); // Set user points from registration response
+      checkDailyRewardStatus(userId);
     } catch (error) {
       console.error("Error:", error);
       setRegistrationStatus("Error registering user");
     }
   };
+  const fetchUserPoints = async (userId) => {
+    try {
+      const response = await fetch(`/api/register?userId=${userId}`);
+      const data = await response.json();
+      if (response.ok) {
+        setUserPoints(data.points);
+      }
+    } catch (error) {
+      console.error("Error fetching user points:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (userInfo && userInfo.id) {
+      fetchUserPoints(userInfo.id);
+    }
+  }, [userInfo]);
 
   if (!userInfo) {
     return (
@@ -68,6 +90,12 @@ export default function Login() {
         <p>
           {registrationStatus} {userInfo.username || "N/A"}
         </p>
+        <div>Points: {userPoints}</div>
+        <button onClick={claimDailyReward} disabled={!canClaimReward}>
+          {canClaimReward
+            ? "Claim Daily Reward"
+            : `Next claim in ${timeUntilNextClaim || "Loading..."}`}
+        </button>
       </div>
     </div>
   );

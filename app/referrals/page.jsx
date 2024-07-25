@@ -8,7 +8,7 @@ import Nfts from "./Nfts";
 
 const Referrals = () => {
   return (
-    <section className="mx-8">
+    <section className="px-8 ">
       <div className="p-3 flex justify-between font-bold border border-neutral-900 hover:border-neutral-100 hover:border cursor-pointer">
         <span className="flex items-center gap-2">
           <img src="chaincoins.svg" alt="Chain Coins" />
