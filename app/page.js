@@ -2,6 +2,7 @@ import Link from "next/link";
 import Login from "./components/Game/Login";
 import Footer from "./components/HomePage/Footer";
 import Navbar from "./components/HomePage/Nav";
+import Banner from "./components/HomePage/Banner";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <Link className="p-2 underline animate-pulse" href="/play ">
           Or Play Game
         </Link>
+        <Banner/>
         <Footer />
       </div>
       <Login />

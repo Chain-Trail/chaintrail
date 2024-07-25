@@ -6,29 +6,29 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
+  extend: {
       keyframes: {
-        "bounce-in-down": {
-          "0%": {
-            opacity: "0",
-            transform: "translateY(-500px)",
+        'bounce-in-down': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(-500px)'
           },
-          "60%": {
-            opacity: "1",
-            transform: "translateY(30px)",
+          '60%': {
+            opacity: '1',
+            transform: 'translateY(30px)'
           },
-          "80%": {
-            transform: "translateY(-10px)",
+          '80%': {
+            transform: 'translateY(-10px)'
           },
-          "100%": {
-            transform: "translateY(0)",
-          },
-        },
+          '100%': {
+            transform: 'translateY(0)'
+          }
+        }
       },
       animation: {
-        "bounce-in-down": "bounce-in-down 1s ease-out",
-      },
-    },
+        'bounce-in-down': 'bounce-in-down 1s ease-out'
+      }
+    }
   },
 
   plugins: [],
