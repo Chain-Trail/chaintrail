@@ -42,7 +42,7 @@ const Play = () => {
         </div>
       </div>
       {/* question starts */}
-      <div className="flex flex-wrap items-center gap-2 justify-center">
+      <div className="flex flex-wrap items-center gap-2 justify-center max-w-[420px]">
         {images.map((image, index) => (
           <img
             key={index}
@@ -65,7 +65,7 @@ const Play = () => {
         ))}
       </div>
       <div className="flex w-full justify-center gap-1 items-center ">
-        <div className=" min-w-[240px] flex items-center justify-between bg-black text-yellow-500 min-h-[30px] p-2">
+        <div className=" min-w-[180px] flex items-center justify-between rounded-lg bg-black text-yellow-500 min-h-[30px] p-2">
           Ans: <span>{selectedAnswers.join("")}</span>
         </div>
         <div className="flex items-center justify-center my-2 text-sm gap-2">
@@ -74,10 +74,11 @@ const Play = () => {
             onClick={deleteLast}>
             Del
           </button>
+          <button className="bg-green-700 hover:bg-green-800 text-white p-2 rounded-lg">Submit</button>
         </div>
       </div>
 
-      <div className="flex items-center justify-center py-2 my-8 text-sm gap-2">
+      <div className="flex items-center justify-center py-2 my-8 text-sm gap-4">
         <button className="bg-white text-black p-2 rounded-lg">
           GET HINT WITH
           <img src="chaincoins.svg" width={30} className="inline" alt="hint" />

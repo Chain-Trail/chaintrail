@@ -20,7 +20,7 @@ const images = [
 
 const Nfts = () => {
   return (
-    <div className="my-16">
+    <div className="my-16 mx-4">
       <div className="flex justify-between items-center">
         <h1 className="my-4">YOUR CHEST</h1>
         <GiOpenTreasureChest className="text-2xl text-yellow-500 mr-10" />
