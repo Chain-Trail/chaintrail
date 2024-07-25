@@ -26,7 +26,7 @@ const Play = () => {
 
   return (
     <section>
-      <div className="px-3 py-1 flex justify-between font-bold items-center">
+      <div className=" py-1 flex justify-between font-bold items-center">
         <div className="flex items-center gap-2">
           <img src="chaincoins.svg" alt="Chain Coins" />
           <span>1005</span>
@@ -42,10 +42,11 @@ const Play = () => {
         </div>
       </div>
       {/* question starts */}
-      <div className="flex flex-wrap items-center gap-2 justify-center mx-4">
+      <div className="flex flex-wrap items-center gap-2 justify-center">
         {images.map((image, index) => (
           <img
             key={index}
+            loading="lazy"
             src={image}
             className="rounded-lg"
             alt={`bitcoin ${index + 1}`}
