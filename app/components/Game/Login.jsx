@@ -43,20 +43,32 @@ export default function Login() {
   };
 
   if (!userInfo) {
-    return <div>Please open on your Telegram...</div>;
+    return (
+      <div className="bg-white text-black p-4 rounded-xl">
+        Please open this app on your Telegram
+        <a
+          href="https://t.me/TWAczbot"
+          className="my-4 text-center border bg-yellow-800 text-white block p-2 rounded-lg hover:bg-yellow-700 cursor-pointer">
+          Open
+        </a>
+      </div>
+    );
   }
 
   return (
     <div>
-      <h1>Telegram Mini App Example</h1>
-      <p>Bot Version: {window.Telegram.WebApp.version}</p>
-      <p>Platform: {window.Telegram.WebApp.platform}</p>
-      <p>User ID: {userInfo.id}</p>
-      <p>First Name: {userInfo.first_name}</p>
-      <p>Username: {userInfo.username || "N/A"}</p>
-      <p>Premium User: {userInfo.is_premium ? "Yes" : "No"}</p>
-      <p>Registration Status: {registrationStatus}</p>
-      <h2>Logged in as {userInfo.username || "N/A"}</h2>
+      <div className="hidden">
+        <p>Platform: {window.Telegram.WebApp.platform}</p>
+        <p>User ID: {userInfo.id}</p>
+        <p>First Name: {userInfo.first_name}</p>
+        <p>Username: {userInfo.username || "N/A"}</p>
+        <p>Premium User: {userInfo.is_premium ? "Yes" : "No"}</p>
+      </div>
+      <div>
+        <p>
+          {registrationStatus} {userInfo.username || "N/A"}
+        </p>
+      </div>
     </div>
   );
 }

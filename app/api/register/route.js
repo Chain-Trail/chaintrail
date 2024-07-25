@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
-  throw new Error("Please define the MONGODB_URI environment variable");
+  throw new Error(" MONGODB_URI is missing or incorrect");
 }
 
 mongoose.connect(MONGODB_URI, {
@@ -12,10 +12,13 @@ mongoose.connect(MONGODB_URI, {
   useUnifiedTopology: true,
 });
 
-const UserSchema = new mongoose.Schema({
-  userId: String,
-  username: String,
-});
+const UserSchema = new mongoose.Schema(
+  {
+    userId: String,
+    username: String,
+  },
+  { timestamps: true }
+);
 
 const User = mongoose.models.User || mongoose.model("User", UserSchema);
 
@@ -26,13 +29,13 @@ export async function POST(request) {
     let user = await User.findOne({ userId });
 
     if (user) {
-      return NextResponse.json({ message: "User already registered" });
+      return NextResponse.json({ message: "Welcome Back, " });
     }
 
     user = new User({ userId, username });
     await user.save();
 
-    return NextResponse.json({ message: "User registered successfully" });
+    return NextResponse.json({ message: "Successfully registered " });
   } catch (err) {
     console.error(err);
     return NextResponse.json({ message: "Server error" }, { status: 500 });

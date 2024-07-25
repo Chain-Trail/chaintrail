@@ -12,8 +12,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={lato.className}>{children} </body>
+    <html lang="en" className="grid place-content-center">
+      <body className={`${lato.className} px-6`}>{children} </body>
     </html>
   );
 }

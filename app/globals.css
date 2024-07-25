@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply bg-neutral-900 text-white max-w-[450px];
+  @apply bg-neutral-900 text-white w-full  max-w-[450px] m-0 p-0;
 }
