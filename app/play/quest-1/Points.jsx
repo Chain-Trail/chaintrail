@@ -1,40 +1,29 @@
-"use client"
 import { useEffect, useState } from "react";
 
 const UserPoints = ({ userId }) => {
-  const [points, setPoints] = useState(null);
+  const [userPoints, setUserPoints] = useState(0);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchUserPoints = async () => {
       try {
         const response = await fetch(`/api/register?userId=${userId}`);
+        const data = await response.json();
         if (response.ok) {
-          const data = await response.json();
-          setPoints(data.points);
+          setUserPoints(data.points);
         } else {
-          const errorData = await response.json();
-          setError(errorData.message);
+          setError(data.message);
         }
       } catch (error) {
-        setError("Server error");
+        setError("Error fetching user points");
+        console.error("Error fetching user points:", error);
       }
     };
 
     fetchUserPoints();
   }, [userId]);
 
-  return (
-    <div>
-      {error ? (
-        <span>{error}</span>
-      ) : points !== null ? (
-        <span>{points}</span>
-      ) : (
-        <span>Loading...</span>
-      )}
-    </div>
-  );
+  return <div>{error ? <span>{error}</span> : <span>{userPoints}</span>}</div>;
 };
 
 export default UserPoints;
