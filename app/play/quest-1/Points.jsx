@@ -9,8 +9,8 @@ const UserPoints = ({ userId }) => {
       try {
         const response = await fetch(`/api/register?userId=${userId}`);
         const data = await response.json();
+        console.log(data);
         if (response.ok) {
-            console.log(data);
             console.log(data.points);
           setUserPoints(data.points);
         } else {
