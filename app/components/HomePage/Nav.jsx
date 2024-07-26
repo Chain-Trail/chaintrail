@@ -33,7 +33,7 @@ const Navbar = () => {
           href="/"
           className="flex items-center space-x-2 animate-bounce-in-down">
           <Image
-            src="/logo2.png"
+            src="https://chain-trail.github.io/Quests/Images/Logo.svg"
             alt="Logo"
             width={30}
             height={30}
@@ -43,12 +43,7 @@ const Navbar = () => {
         <button
           onClick={openPopup}
           className="animate-bounce-in-down focus:outline-none">
-          <Image
-            src="/btn/button2.png"
-            alt="Button"
-            width={140}
-            height={32}
-          />
+          <Image src="/btn/button2.png" alt="Button" width={140} height={32} />
         </button>
       </div>
       <Popup isOpen={isPopupOpen} onClose={closePopup} />
