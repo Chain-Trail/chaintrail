@@ -33,7 +33,7 @@ const Navbar = () => {
           href="/"
           className="flex items-center space-x-2 animate-bounce-in-down">
           <Image
-            src="logo.svg"
+            src="/logo2.png"
             alt="Logo"
             width={40}
             height={40}
