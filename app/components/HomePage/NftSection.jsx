@@ -51,7 +51,7 @@ const NFTSection = () => {
       </div>
 
       <div className="text-center mt-10">
-        <Link href="#" className="inline-block">
+        <Link href="/play" className="inline-block">
           <button className="hover:scale-105 transition-transform duration-300 ease-in-out bg-yellow-600 rounded-lg py-2 px-8">
             Play Now
           </button>

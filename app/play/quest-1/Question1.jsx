@@ -113,45 +113,46 @@ const QuestionComponent = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-2 place-content-center">
+      <div className="grid grid-cols-2 gap-2 place-content-center max-w-fit mx-auto">
         {currentQuestion.images.map((image, index) => (
           <img
             key={index}
             loading="lazy"
             src={image}
-            className="rounded-lg hover:brightness-50"
+            className=" rounded-lg hover:brightness-50"
             alt={`question ${currentQuestionIndex + 1} image ${index + 1}`}
             style={{ width: "120px" }}
           />
         ))}
       </div>
-
-      <div className="flex flex-wrap items-center gap-2 justify-center my-8">
-        {currentQuestion.possibleAnswers.map((answer, index) => (
-          <div
-            key={index}
-            className="bg-black hover:bg-yellow-900 text-white p-2 rounded-md cursor-pointer"
-            onClick={() => handleAnswerClick(answer)}>
-            {answer}
-          </div>
-        ))}
-      </div>
-
-      <div className="flex w-full justify-center gap-1 items-center ">
-        <div className=" min-w-[180px] flex items-center justify-between rounded-lg bg-black text-yellow-500 min-h-[30px] p-2">
-          Ans: <span>{selectedAnswers.join("")}</span>
+      <div className="grid grid-cols-2 place-content-center mx-auto max-w-[300px] gap-4 my-4">
+        <div className="flex flex-wrap items-center gap-2 justify-center">
+          {currentQuestion.possibleAnswers.map((answer, index) => (
+            <div
+              key={index}
+              className="bg-black hover:bg-yellow-900 text-white p-2 rounded-md cursor-pointer"
+              onClick={() => handleAnswerClick(answer)}>
+              {answer}
+            </div>
+          ))}
         </div>
-        <div className="flex items-center justify-center text-sm gap-2">
-          <button
-            className="bg-white text-black p-2 rounded-lg"
-            onClick={deleteLast}>
-            Del
-          </button>
-          <button
-            className="bg-blue-700 hover:bg-blue-800 text-white p-2 rounded-lg"
-            onClick={handleSubmit}>
-            Submit
-          </button>
+
+        <div className="flex flex-col w-full justify-center gap-1 items-center ">
+          <div className=" min-w-[150px] flex items-center justify-between rounded-lg bg-black text-yellow-500 min-h-[30px] p-2">
+            Ans: <span>{selectedAnswers.join("")}</span>
+          </div>
+          <div className="flex items-center justify-center text-sm gap-2 my-2">
+            <button
+              className="bg-white text-black p-2 rounded-lg"
+              onClick={deleteLast}>
+              Delete
+            </button>
+            <button
+              className="bg-blue-700 hover:bg-blue-800 text-white p-2 rounded-lg"
+              onClick={handleSubmit}>
+              Submit
+            </button>
+          </div>
         </div>
       </div>
 
