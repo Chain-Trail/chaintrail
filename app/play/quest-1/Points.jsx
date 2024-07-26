@@ -10,6 +10,8 @@ const UserPoints = ({ userId }) => {
         const response = await fetch(`/api/register?userId=${userId}`);
         const data = await response.json();
         if (response.ok) {
+            console.log(data);
+            console.log(data.points);
           setUserPoints(data.points);
         } else {
           setError(data.message);

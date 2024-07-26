@@ -68,7 +68,7 @@ export async function PUT(request) {
   try {
     const user = await User.findOne({ userId });
     if (!user) {
-      return NextResponse.json({ message: 'User does not exist' }, { status: 404 });
+      return NextResponse.json({ message: 'User not found' }, { status: 404 });
     }
 
     const now = new Date();
