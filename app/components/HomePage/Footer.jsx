@@ -36,10 +36,10 @@ const Footer = () => {
   ];
 
   return (
-    <footer className=" w-full bg-slate-900 py-12">
+    <footer className=" w-full bg-neutral-900 py-12">
       <div className=" px-4">
         <div className="">
-          <div className="bg-slate-900 p-2 rounded-lg">
+          <div className="bg-neutral-950 p-2 my-4 rounded-lg">
             <h1 className="text-3xl font-bold mb-6">Meet Our Team</h1>
             <div className="">
               {teamMembers.map((member, index) => (
