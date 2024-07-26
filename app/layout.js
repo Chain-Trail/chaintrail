@@ -1,5 +1,6 @@
 import { Lato } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/HomePage/Nav";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -13,7 +14,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="grid place-content-center">
-      <body className={`${lato.className}`}>{children} </body>
+      <body className={`${lato.className}`}>
+        <Navbar/>{children} </body>
     </html>
   );
 }

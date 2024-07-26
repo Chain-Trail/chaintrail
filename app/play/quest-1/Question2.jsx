@@ -6,15 +6,15 @@ import { LuShare2 } from "react-icons/lu";
 import { GrFormNextLink } from "react-icons/gr";
 
 const images = [
-  "quest/bitcoin.jpg",
-  "quest/bitcoin2.jpg",
-  "quest/bitcoin3.jpg",
-  "quest/bitcoin4.jpg",
+  "../quest/bitcoin.jpg",
+  "../quest/bitcoin2.jpg",
+  "../quest/bitcoin3.jpg",
+  "../quest/bitcoin4.jpg",
 ];
 
 const possibleAnswers = ["C", "B", "T", "D", "O", "I", "F", "N"];
 
-const Play = () => {
+const Question2 = () => {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
 
   const handleAnswerClick = (answer) => {
@@ -26,14 +26,14 @@ const Play = () => {
 
   return (
     <section>
-      <div className=" py-1 flex justify-between font-bold items-center">
+      <div className="mt-16 py-1 flex justify-between font-bold items-center">
         <div className="flex items-center gap-2">
-          <img src="chaincoins.svg" alt="Chain Coins" />
+          <img src="../chaincoins.svg" alt="Chain Coins" />
           <span>1005</span>
         </div>
         <div className="flex">
-          <img src="redImg.png" alt="level" className="w-[60px]" />
-          <span className="relative text-sm top-[17px] right-[43px]">8/10</span>
+          <img src="../redImg.png" alt="level" className="w-[60px]" />
+          <span className="relative text-sm top-[17px] right-[43px]">1/10</span>
         </div>
         <div className="text-2xl flex gap-2 font-extrabold ">
           <Link href="/">
@@ -99,4 +99,4 @@ const Play = () => {
   );
 };
 
-export default Play;
+export default Question2;
