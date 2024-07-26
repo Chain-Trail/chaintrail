@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { CiCircleCheck } from "react-icons/ci";
 import { RiMenu3Fill } from "react-icons/ri";
 import { GrFormNextLink } from "react-icons/gr";
+import UserPoints from "./Points";
 
 const questions = [
   {
@@ -98,7 +99,7 @@ const QuestionComponent = () => {
       <div className="mt-16 py-1 flex justify-between font-bold items-center">
         <div className="flex items-center gap-2">
           <img src="../chaincoins.svg" alt="Chain Coins" />
-          <span>1005</span>
+          <span><UserPoints/></span>
         </div>
         <div className="flex">
           <img src="../redImg.png" alt="level" className="w-[60px]" />
