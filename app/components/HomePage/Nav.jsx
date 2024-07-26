@@ -28,16 +28,15 @@ const Navbar = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isSticky ? "bg-neutral-950 shadow-md" : "bg-transparent"
       }`}>
-      <div className="container mx-auto px-4 py-2 flex justify-between items-center">
+      <div className="mx-auto px-4 py-2 flex justify-between items-center">
         <Link
           href="/"
           className="flex items-center space-x-2 animate-bounce-in-down">
           <Image
             src="/logo2.png"
             alt="Logo"
-            width={40}
-            height={40}
-            className="cn-logo"
+            width={30}
+            height={30}
           />
           <span className="text-xl font-bold">CHAIN TRAIL</span>
         </Link>
@@ -49,7 +48,6 @@ const Navbar = () => {
             alt="Button"
             width={140}
             height={32}
-            className="clicky"
           />
         </button>
       </div>
