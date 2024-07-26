@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { CiCircleCheck } from "react-icons/ci";
 import { RiMenu3Fill } from "react-icons/ri";
 import { GrFormNextLink } from "react-icons/gr";
-import UserPoints from "./Points";
+import { MdDelete } from "react-icons/md";
 
 const questions = [
   {
@@ -15,7 +15,24 @@ const questions = [
       "../quest/bitcoin3.jpg",
       "../quest/bitcoin4.jpg",
     ],
-    possibleAnswers: ["C", "B", "T", "D", "O", "I", "F", "N"],
+    possibleAnswers: [
+      "C",
+      "B",
+      "T",
+      "D",
+      "O",
+      "A",
+      "J",
+      "Z",
+      "A",
+      "T",
+      "D",
+      "O",
+      "I",
+      "F",
+      "F",
+      "N",
+    ],
     correctAnswer: "BITCOIN",
   },
   {
@@ -25,8 +42,25 @@ const questions = [
       "../quest/bitcoin.jpg",
       "../quest/bitcoin3.jpg",
     ],
-    possibleAnswers: ["1", "B", "T", "E", "O", "A", "F", "N"],
-    correctAnswer: "BITCOIN",
+    possibleAnswers: [
+      "C",
+      "B",
+      "T",
+      "D",
+      "T",
+      "D",
+      "O",
+      "I",
+      "O",
+      "I",
+      "T",
+      "D",
+      "O",
+      "I",
+      "F",
+      "N",
+    ],
+    correctAnswer: "BITIN",
   },
   {
     images: [
@@ -35,8 +69,25 @@ const questions = [
       "../quest/bitcoin3.jpg",
       "../quest/bitcoin3.jpg",
     ],
-    possibleAnswers: ["1", "B", "T", "E", "O", "A", "F", "N"],
-    correctAnswer: "BITCOIN",
+    possibleAnswers: [
+      "C",
+      "B",
+      "T",
+      "D",
+      "T",
+      "D",
+      "O",
+      "I",
+      "O",
+      "I",
+      "T",
+      "D",
+      "O",
+      "I",
+      "F",
+      "N",
+    ],
+    correctAnswer: "BIUUOIN",
   },
   {
     images: [
@@ -45,7 +96,24 @@ const questions = [
       "../quest/bitcoin.jpg",
       "../quest/bitcoin.jpg",
     ],
-    possibleAnswers: ["1", "B", "T", "E", "O", "A", "F", "N"],
+    possibleAnswers: [
+      "C",
+      "B",
+      "T",
+      "D",
+      "T",
+      "D",
+      "O",
+      "I",
+      "O",
+      "I",
+      "T",
+      "D",
+      "O",
+      "I",
+      "F",
+      "N",
+    ],
     correctAnswer: "BITCOIN",
   },
   // Add 4 more question objects here
@@ -61,18 +129,29 @@ const QuestionComponent = () => {
   const currentQuestion = questions[currentQuestionIndex];
 
   const handleAnswerClick = (answer) => {
-    setSelectedAnswers([...selectedAnswers, answer]);
+    const newSelectedAnswers = [...selectedAnswers, answer];
+    setSelectedAnswers(newSelectedAnswers);
+
+    // Check if the answer length matches the correct answer length
+    if (newSelectedAnswers.length === currentQuestion.correctAnswer.length) {
+      handleSubmit(newSelectedAnswers);
+    }
   };
 
   const deleteLast = () => {
     setSelectedAnswers(selectedAnswers.slice(0, -1));
   };
 
-  const handleSubmit = () => {
-    const submittedAnswer = selectedAnswers.join("");
+  const handleSubmit = (answers = selectedAnswers) => {
+    const submittedAnswer = answers.join("");
     const correct = submittedAnswer === currentQuestion.correctAnswer;
     setIsCorrect(correct);
     setShowPopup(true);
+
+    // Set a timer to move to the next question after 3 seconds
+    setTimeout(() => {
+      handleNext();
+    }, 3000);
   };
 
   const handleNext = () => {
@@ -89,7 +168,7 @@ const QuestionComponent = () => {
     if (showPopup) {
       const timer = setTimeout(() => {
         setShowPopup(false);
-      }, 2000);
+      }, 3000);
       return () => clearTimeout(timer);
     }
   }, [showPopup]);
@@ -99,7 +178,7 @@ const QuestionComponent = () => {
       <div className="mt-16 py-1 flex justify-between font-bold items-center">
         <div className="flex items-center gap-2">
           <img src="../chaincoins.svg" alt="Chain Coins" />
-          <span><UserPoints/></span>
+          <span>1000</span>
         </div>
         <div className="flex">
           <img src="../redImg.png" alt="level" className="w-[60px]" />
@@ -113,20 +192,33 @@ const QuestionComponent = () => {
           </Link>
         </div>
       </div>
-
-      <div className="grid grid-cols-2 gap-2 place-content-center max-w-fit mx-auto">
+      <div className="grid grid-cols-2 gap-2 place-content-center w-full mx-auto">
         {currentQuestion.images.map((image, index) => (
           <img
             key={index}
             loading="lazy"
             src={image}
-            className=" rounded-lg hover:brightness-50"
+            className=" rounded-lg hover:brightness-50 w-full mx-4"
             alt={`question ${currentQuestionIndex + 1} image ${index + 1}`}
-            style={{ width: "120px" }}
           />
         ))}
       </div>
-      <div className="grid grid-cols-2 place-content-center mx-auto max-w-[300px] gap-4 my-4">
+      {/* style for input area */}
+      <div className="max-w-[320px] mx-auto bg-neutral-950 text-white px-1 py-2 my-3 flex items-center">
+        <div className="flex mx-auto">
+          {Array.from({ length: currentQuestion.correctAnswer.length }).map(
+            (_, index) => (
+              <span
+                key={index}
+                className="w-7 h-8 bg-[#404040] rounded mx-1 flex items-center justify-center">
+                {selectedAnswers[index] || ""}
+              </span>
+            )
+          )}
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-[320px] gap-4 my-4">
         <div className="flex flex-wrap items-center gap-2 justify-center">
           {currentQuestion.possibleAnswers.map((answer, index) => (
             <div
@@ -137,59 +229,44 @@ const QuestionComponent = () => {
             </div>
           ))}
         </div>
-
-        <div className="flex flex-col w-full justify-center gap-1 items-center ">
-          <div className=" min-w-[150px] flex items-center justify-between rounded-lg bg-black text-yellow-500 min-h-[30px] p-2">
-            Ans: <span>{selectedAnswers.join("")}</span>
-          </div>
-          <div className="flex items-center justify-center text-sm gap-2 my-2">
-            <button
-              className="bg-white text-black p-2 rounded-lg"
-              onClick={deleteLast}>
-              Delete
-            </button>
-            <button
-              className="bg-blue-700 hover:bg-blue-800 text-white p-2 rounded-lg"
-              onClick={handleSubmit}>
-              Submit
-            </button>
-          </div>
-        </div>
       </div>
-
-      <div className="flex items-center justify-center py-2 mt-4 text-sm gap-4">
-        <button className="bg-black text-white py-2 px-4 rounded-lg">
+      <div className="max-w-[320px] font-bold flex items-center justify-center py-2 text-sm gap-2 mx-auto">
+        <button className="bg-white text-black py-2 px-2 rounded ">
           GET HINT WITH
           <img
             src="../chaincoins.svg"
-            width={30}
-            className="inline mx-2"
+            width={25}
+            className="inline mx-2 object-cover w-[20px]"
             alt="hint"
           />
           20
         </button>
-
+        <button
+          className="bg-red-700 px-4 flex flex-col py-1 rounded items-center justify-between cursor-pointer"
+          onClick={deleteLast}>
+          <MdDelete />
+          <span className="text-xs">Del </span>
+        </button>
         <span
-          className="bg-green-700 flex flex-col p-2 rounded-lg items-center justify-between cursor-pointer"
+          className="bg-green-700 flex flex-col px-2 py-1 rounded items-center justify-between cursor-pointer"
           onClick={handleNext}>
           {currentQuestionIndex === questions.length - 1 ? (
             <>
-              <CiCircleCheck /> FInish Quest
+              <CiCircleCheck /> <span className="text-xs">Finish </span>
             </>
           ) : (
             <>
-              <GrFormNextLink /> Next
+              <GrFormNextLink /> <span className="text-xs">Next </span>
             </>
           )}
         </span>
       </div>
-
       {showPopup && (
         <div
           className={`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 rounded-lg ${
             isCorrect ? "bg-green-500" : "bg-red-500"
           } text-white`}>
-          {isCorrect ? "Correct!" : "Incorrect!"}
+          {isCorrect ? "Correct! You just earned 100 points" : "Incorrect!"}
         </div>
       )}
     </section>

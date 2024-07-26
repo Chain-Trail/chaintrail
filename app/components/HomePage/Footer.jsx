@@ -16,7 +16,7 @@ const Footer = () => {
       github: "https://github.com/chiscookeke11",
     },
     {
-      name: "Olebuezie Chibuzor Damian",
+      name: "Damian Olebuezie ",
       role: "Smart Contract Developer",
       image: "/team/photo_2024-07-25_02-29-08.jpg",
       github: "https://github.com/czDamian",
@@ -32,6 +32,11 @@ const Footer = () => {
       role: "Backend Developer",
       image: "/team/photo_2024-07-25_02-29-03.jpg",
       github: "https://github.com/Prnzwil",
+    },{
+      name: "Osatuyi Flora",
+      role: "UI/UX Designer",
+      image: "/team/photo_2024-07-25_02-29-03.jpg",
+      github: "https://x.com/oluwa_chioma",
     },
   ];
 
