@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const NFTCard = ({ title, nftImage, qrImage }) => (
-  <div className="bg-slate-950 rounded-lg text-sm">
+  <div className="bg-neutral-950 rounded-lg text-sm">
     <div className="p-2">
       <h5 className="font-bold mb-4 text-center">{title}</h5>
       <div className="flex flex-col justify-between items-center mb-4">

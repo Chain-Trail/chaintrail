@@ -4,6 +4,7 @@ import Footer from "./components/HomePage/Footer";
 import Navbar from "./components/HomePage/Nav";
 import NFTSection from "./components/HomePage/NftSection";
 import HowToPlay from "./components/HomePage/HowToPlay";
+import Partners from "./components/HomePage/Partners";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         </Link>
         <NFTSection/>
         <HowToPlay/>
+        <Partners/>
         <Footer />
       </div>
       <Login />
