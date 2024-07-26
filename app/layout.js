@@ -16,9 +16,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="grid place-content-center">
       <body className={`${lato.className}`}>
-        <AutoRegisterUser/>
-        <Navbar />
-        {children}
+        <AutoRegisterUser>
+          <Navbar />
+          {children}
+        </AutoRegisterUser>
       </body>
     </html>
   );

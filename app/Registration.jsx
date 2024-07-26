@@ -1,8 +1,9 @@
 "use client";
+import { createContext, useState, useEffect } from "react";
 
-import { useEffect, useState } from "react";
+export const UserContext = createContext();
 
-export default function AutoRegisterUser() {
+export default function AutoRegisterUser({ children }) {
   const [userInfo, setUserInfo] = useState(null);
   const [registrationStatus, setRegistrationStatus] = useState("");
   const [userPoints, setUserPoints] = useState(0);
@@ -45,16 +46,8 @@ export default function AutoRegisterUser() {
   };
 
   return (
-    <div className="hidden">
-      <div className="">
-        <p>User ID: {userInfo ? userInfo.id : "N/A"}</p>
-      </div>
-      <div>
-        <p>
-          {registrationStatus} {userInfo ? userInfo.username : "N/A"}
-        </p>
-        <div>Points: {userPoints}</div>
-      </div>
-    </div>
+    <UserContext.Provider value={{ userInfo, registrationStatus, userPoints }}>
+      {children}
+    </UserContext.Provider>
   );
 }
