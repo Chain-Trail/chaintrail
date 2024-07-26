@@ -1,97 +1,27 @@
-"use client";
-import { useState } from "react";
 import Link from "next/link";
-import { RiMenu3Fill } from "react-icons/ri";
-import { LuShare2 } from "react-icons/lu";
-import { GrFormNextLink } from "react-icons/gr";
-
-const images = [
-  "quest/bitcoin.jpg",
-  "quest/bitcoin2.jpg",
-  "quest/bitcoin3.jpg",
-  "quest/bitcoin4.jpg",
-];
-
-const possibleAnswers = ["C", "B", "T", "D", "O", "I", "F", "N"];
 
 const Play = () => {
-  const [selectedAnswers, setSelectedAnswers] = useState([]);
-
-  const handleAnswerClick = (answer) => {
-    setSelectedAnswers([...selectedAnswers, answer]);
-  };
-  const deleteLast = () => {
-    setSelectedAnswers(selectedAnswers.slice(0, -1));
-  };
+  const quests = [
+    { id: 1, name: "Quest 1", href: "#" },
+    { id: 2, name: "Quest 2", href: "#" },
+    { id: 3, name: "Quest 3", href: "#" },
+    { id: 4, name: "Quest 4", href: "#" },
+    { id: 5, name: "Quest 5", href: "#" },
+    { id: 6, name: "Quest 6", href: "#" },
+    { id: 7, name: "Quest 7", href: "#" },
+    { id: 8, name: "Quest 8", href: "#" },
+    { id: 9, name: "Quest 9", href: "#" },
+    { id: 10, name: "Quest 10", href: "#" },
+  ];
 
   return (
-    <section>
-      <div className=" py-1 flex justify-between font-bold items-center">
-        <div className="flex items-center gap-2">
-          <img src="chaincoins.svg" alt="Chain Coins" />
-          <span>1005</span>
-        </div>
-        <div className="flex">
-          <img src="redImg.png" alt="level" className="w-[60px]" />
-          <span className="relative text-sm top-[17px] right-[43px]">8/10</span>
-        </div>
-        <div className="text-2xl flex gap-2 font-extrabold ">
-          <Link href="/">
-            <RiMenu3Fill title="home" />
+    <section className="mt-20 w-full ">
+      <div className=" w-full ">
+        {quests.map((quest) => (
+          <Link key={quest.id} href={quest.href} className=" py-3 px-8 bg-neutral-800 hover:bg-neutral-950 mb-2 w-full block">
+            {quest.name}
           </Link>
-        </div>
-      </div>
-      {/* question starts */}
-      <div className="flex flex-wrap items-center gap-2 justify-center max-w-[420px]">
-        {images.map((image, index) => (
-          <img
-            key={index}
-            loading="lazy"
-            src={image}
-            className="rounded-lg"
-            alt={`bitcoin ${index + 1}`}
-            style={{ width: "140px" }}
-          />
         ))}
-      </div>
-      <div className="flex flex-wrap items-center gap-2 justify-center my-8">
-        {possibleAnswers.map((answer, index) => (
-          <div
-            key={index}
-            className="bg-black hover:bg-yellow-900 text-white p-2 rounded-md cursor-pointer"
-            onClick={() => handleAnswerClick(answer)}>
-            {answer}
-          </div>
-        ))}
-      </div>
-      <div className="flex w-full justify-center gap-1 items-center ">
-        <div className=" min-w-[180px] flex items-center justify-between rounded-lg bg-black text-yellow-500 min-h-[30px] p-2">
-          Ans: <span>{selectedAnswers.join("")}</span>
-        </div>
-        <div className="flex items-center justify-center my-2 text-sm gap-2">
-          <button
-            className="bg-white text-black p-2 rounded-lg"
-            onClick={deleteLast}>
-            Del
-          </button>
-          <button className="bg-green-700 hover:bg-green-800 text-white p-2 rounded-lg">Submit</button>
-        </div>
-      </div>
-
-      <div className="flex items-center justify-center py-2 my-8 text-sm gap-4">
-        <button className="bg-white text-black p-2 rounded-lg">
-          GET HINT WITH
-          <img src="chaincoins.svg" width={30} className="inline" alt="hint" />
-          20
-        </button>
-        <span className="bg-black text-white flex flex-col p-2 rounded-lg cursor-pointer items-center justify-between">
-          <LuShare2 />
-          Share
-        </span>
-        <span className="bg-black flex flex-col p-2 rounded-lg items-center justify-between cursor-pointer">
-          <GrFormNextLink />
-          Next
-        </span>
       </div>
     </section>
   );
