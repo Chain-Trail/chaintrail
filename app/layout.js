@@ -1,7 +1,6 @@
 import { Lato } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/HomePage/Nav";
-import Verification from "./Verification";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -17,7 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className="grid place-content-center">
       <body className={`${lato.className}`}>
         <Navbar />
-        <Verification>{children}</Verification>
+        {children}
       </body>
     </html>
   );
