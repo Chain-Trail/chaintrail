@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 
 const GameComponent = () => {
-  const [questions, setQuestions] = useState([]);
+  const [hackQuest, setHackQuest] = useState({});
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userInput, setUserInput] = useState("");
   const [score, setScore] = useState(0);
@@ -10,14 +10,22 @@ const GameComponent = () => {
   useEffect(() => {
     fetch(`/api/questions/${currentQuestion}`)
       .then((response) => response.json())
-      .then((data) => setQuestions(data));
+      .then((data) => setHackQuest(data));
   }, []);
 
   const handleSubmit = (e) => {
+
+    const quest = JSON.parse(hackQuest.quest);
+    const isAnswered = hackQuest.isAnswered;
+    const isOpened = hackQuest.isOpened;
+    const isCompleted = hackQuest.isCompleted;
+
     e.preventDefault();
     if (
       userInput.toLowerCase() ===
-      questions[currentQuestion].answer.toLowerCase()
+      quest.answers[currentQuestion].toLowerCase()
+
+      // questions[currentQuestion].answer.toLowerCase()
     ) {
       setScore(score + 100);
     }

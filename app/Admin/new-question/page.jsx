@@ -22,6 +22,16 @@ const NewQuestion = () => {
   const [answer8, setAnswer8] = useState("");
   const [answer9, setAnswer9] = useState("");
   const [answer10, setAnswer10] = useState("");
+  const [hint1, setHint1] = useState("");
+  const [hint2, setHint2] = useState("");
+  const [hint3, setHint3] = useState("");
+  const [hint4, setHint4] = useState("");
+  const [hint5, setHint5] = useState("");
+  const [hint6, setHint6] = useState("");
+  const [hint7, setHint7] = useState("");
+  const [hint8, setHint8] = useState("");
+  const [hint9, setHint9] = useState("");
+  const [hint10, setHint10] = useState("");
   const [quest, setQuest] = useState({});
 
 
@@ -33,6 +43,9 @@ const NewQuestion = () => {
       ],
       answers: [
         answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10
+      ],
+      hints: [
+        hint1, hint2, hint3, hint4, hint5, hint6, hint7, hint8, hint9, hint10
       ]
     })
 
@@ -65,6 +78,13 @@ const NewQuestion = () => {
         type="text"
         value={answer1}
         onChange={(e) => setAnswer1(e.target.value)}
+        placeholder="Answer"
+      />
+      <input
+        type="text"
+        value={hint1}
+        onChange={(e) => setHint1(e.target.value)}
+        placeholder="Hint"
       />
 
       {/* Second Question */}
@@ -86,6 +106,13 @@ const NewQuestion = () => {
         type="text"
         value={answer2}
         onChange={(e) => setAnswer2(e.target.value)}
+        placeholder='Answer'
+      />
+      <input
+        type="text"
+        value={hint2}
+        onChange={(e) => setHint2(e.target.value)}
+        placeholder="Hint"
       />
 
       {/* Third Question */}
@@ -107,6 +134,13 @@ const NewQuestion = () => {
         type="text"
         value={answer3}
         onChange={(e) => setAnswer3(e.target.value)}
+        placeholder='Answer'
+      />
+      <input
+        type="text"
+        value={hint3}
+        onChange={(e) => setHint3(e.target.value)}
+        placeholder="Hint"
       />
 
       {/* Fourth question */}
@@ -128,6 +162,13 @@ const NewQuestion = () => {
         type="text"
         value={answer4}
         onChange={(e) => setAnswer4(e.target.value)}
+        placeholder='Answer'
+      />
+      <input
+        type="text"
+        value={hint4}
+        onChange={(e) => setHint4(e.target.value)}
+        placeholder="Hint"
       />
 
       {/* Fifth question*/}
@@ -149,6 +190,13 @@ const NewQuestion = () => {
         type="text"
         value={answer5}
         onChange={(e) => setAnswer5(e.target.value)}
+        placeholder='Answer'
+      />
+      <input
+        type="text"
+        value={hint5}
+        onChange={(e) => setHint5(e.target.value)}
+        placeholder="Hint"
       />
 
       {/* Sixth question */}
@@ -170,6 +218,13 @@ const NewQuestion = () => {
         type="text"
         value={answer6}
         onChange={(e) => setAnswer6(e.target.value)}
+        placeholder='Answer'
+      />
+      <input
+        type="text"
+        value={hint6}
+        onChange={(e) => setHint6(e.target.value)}
+        placeholder="Hint"
       />
 
       {/* Seventh question */}
@@ -191,6 +246,13 @@ const NewQuestion = () => {
         type="text"
         value={answer7}
         onChange={(e) => setAnswer7(e.target.value)}
+        placeholder='Answer'
+      />
+      <input
+        type="text"
+        value={hint7}
+        onChange={(e) => setHint7(e.target.value)}
+        placeholder="Hint"
       />
 
       {/* Eighth question */}
@@ -212,6 +274,13 @@ const NewQuestion = () => {
         type="text"
         value={answer8}
         onChange={(e) => setAnswer8(e.target.value)}
+        placeholder='Answer'
+      />
+      <input
+        type="text"
+        value={hint8}
+        onChange={(e) => setHint8(e.target.value)}
+        placeholder="Hint"
       />
 
       {/* Ninth question */}
@@ -233,6 +302,13 @@ const NewQuestion = () => {
         type="text"
         value={answer9}
         onChange={(e) => setAnswer9(e.target.value)}
+        placeholder='Answer'
+      />
+      <input
+        type="text"
+        value={hint9}
+        onChange={(e) => setHint9(e.target.value)}
+        placeholder="Hint"
       />
 
       {/* Tenth question */}
@@ -254,6 +330,13 @@ const NewQuestion = () => {
         type="text"
         value={answer10}
         onChange={(e) => setAnswer10(e.target.value)}
+        placeholder='Answer'
+      />
+      <input
+        type="text"
+        value={hint10}
+        onChange={(e) => setHint10(e.target.value)}
+        placeholder="Hint"
       />
       <button onClick={handleAddQuestion}>Add Quest</button>
     </div>
