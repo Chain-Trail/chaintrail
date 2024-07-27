@@ -8,15 +8,20 @@ import Popup from "./Popup";
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isTelegramAvailable, setIsTelegramAvailable] = useState(false);
 
   const openPopup = () => setIsPopupOpen(true);
   const closePopup = () => setIsPopupOpen(false);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsSticky(window.scrollY > 0);
     };
 
     window.addEventListener("scroll", handleScroll);
+
+    // Check for Telegram script availability
+    setIsTelegramAvailable(!!window.Telegram);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -43,7 +48,18 @@ const Navbar = () => {
         <button
           onClick={openPopup}
           className="animate-bounce-in-down focus:outline-none">
-          <Image src="/btn/button2.png" alt="Button" width={140} height={32} />
+          {isTelegramAvailable ? (
+            <span className="text-white bg-blue-500 px-4 py-2 rounded">
+              Welcome Back
+            </span>
+          ) : (
+            <Image
+              src="/btn/button2.png"
+              alt="Button"
+              width={140}
+              height={32}
+            />
+          )}
         </button>
       </div>
       <Popup isOpen={isPopupOpen} onClose={closePopup} />

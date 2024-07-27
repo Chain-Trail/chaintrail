@@ -175,14 +175,14 @@ const QuestionComponent = () => {
 
   return (
     <section>
-      <div className="mt-16 py-1 flex justify-between font-bold items-center">
+      <div className="mt-12 py-1 flex justify-between font-bold items-center text-sm">
         <div className="flex items-center gap-2">
           <img src="../chaincoins.svg" alt="Chain Coins" />
-          <span>1000</span>
+          <span>1350</span>
         </div>
         <div className="flex">
-          <img src="../redImg.png" alt="level" className="w-[60px]" />
-          <span className="relative text-sm top-[17px] right-[43px]">
+          <img src="../redImg.png" alt="level" className="w-[40px]" />
+          <span className="relative text-xs top-[12px] right-[30px]">
             {currentQuestionIndex + 1}/{questions.length}
           </span>
         </div>
@@ -198,13 +198,13 @@ const QuestionComponent = () => {
             key={index}
             loading="lazy"
             src={image}
-            className=" rounded-lg hover:brightness-50 w-full mx-4"
+            className=" rounded-lg w-full max-h-[140px] hover:brightness-50"
             alt={`question ${currentQuestionIndex + 1} image ${index + 1}`}
           />
         ))}
       </div>
       {/* style for input area */}
-      <div className="max-w-[320px] mx-auto bg-neutral-950 text-white px-1 py-2 my-3 flex items-center">
+      <div className="max-w-[320px] mx-auto bg-neutral-950 text-white px-1 py-2 my-1 flex items-center text-lg">
         <div className="flex mx-auto">
           {Array.from({ length: currentQuestion.correctAnswer.length }).map(
             (_, index) => (
@@ -218,20 +218,20 @@ const QuestionComponent = () => {
         </div>
       </div>
 
-      <div className="mx-auto max-w-[320px] gap-4 my-4">
+      <div className="mx-auto text-xl max-w-[320px] gap-4 my-2">
         <div className="flex flex-wrap items-center gap-2 justify-center">
           {currentQuestion.possibleAnswers.map((answer, index) => (
             <div
               key={index}
-              className="bg-black hover:bg-yellow-900 text-white p-2 rounded-md cursor-pointer"
+              className="bg-black hover:bg-yellow-700 active:bg-yellow-900 text-white p-2 rounded-md cursor-pointer"
               onClick={() => handleAnswerClick(answer)}>
               {answer}
             </div>
           ))}
         </div>
       </div>
-      <div className="max-w-[320px] font-bold flex items-center justify-center py-2 text-sm gap-2 mx-auto">
-        <button className="bg-white text-black py-2 px-2 rounded ">
+      <div className="max-w-[320px] font-bold flex items-center text-lg justify-center py-2 gap-2 mx-auto">
+        <button className="bg-white text-sm text-black py-2 px-2 rounded ">
           GET HINT WITH
           <img
             src="../chaincoins.svg"
@@ -242,13 +242,13 @@ const QuestionComponent = () => {
           20
         </button>
         <button
-          className="bg-red-700 px-4 flex flex-col py-1 rounded items-center justify-between cursor-pointer"
+          className="bg-red-700 active:bg-red-500 px-4 flex flex-col py-1 rounded items-center justify-between cursor-pointer"
           onClick={deleteLast}>
           <MdDelete />
           <span className="text-xs">Del </span>
         </button>
         <span
-          className="bg-green-700 flex flex-col px-2 py-1 rounded items-center justify-between cursor-pointer"
+          className="bg-green-700 active:bg-green-500 flex flex-col px-2 py-1 rounded items-center justify-between cursor-pointer"
           onClick={handleNext}>
           {currentQuestionIndex === questions.length - 1 ? (
             <>
