@@ -6,6 +6,9 @@ const GameComponent = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userInput, setUserInput] = useState("");
   const [score, setScore] = useState(0);
+  const [isAnswered, setIsAnswered] = useState(hackQuest.isAnswered)
+  const [isOpened, setIsOpened] = useState(hackQuest.isOpened)
+  const [isCompleted, setIsCompleted] = useState(hackQuest.isCompleted)
 
   useEffect(() => {
     fetch(`/api/questions/${currentQuestion}`)
@@ -13,35 +16,83 @@ const GameComponent = () => {
       .then((data) => setHackQuest(data));
   }, []);
 
-  const handleSubmit = (e) => {
+  if (hackQuest) {
+    setIsOpened(true);
 
-    const quest = JSON.parse(hackQuest.quest);
-    const isAnswered = hackQuest.isAnswered;
-    const isOpened = hackQuest.isOpened;
-    const isCompleted = hackQuest.isCompleted;
+    const updateIsOpened = async () => {
+      try {
+        const response = await fetch(`/api/questions/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ isOpened })
+        });
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    updateIsOpened();
+  }
+
+  const quest = JSON.parse(hackQuest.quest);
+
+  const handleSubmit = async (e) => {
 
     e.preventDefault();
+
     if (
       userInput.toLowerCase() ===
       quest.answers[currentQuestion].toLowerCase()
-
-      // questions[currentQuestion].answer.toLowerCase()
     ) {
-      setScore(score + 100);
-    }
-    setCurrentQuestion(currentQuestion + 1);
-    setUserInput("");
-  };
 
-  if (currentQuestion >= questions.length) {
+      setIsAnswered(true);
+      setScore(score + 100);
+
+      try {
+        const response = await fetch(`/api/questions/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ isAnswered })
+        });
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+
+  setCurrentQuestion(currentQuestion + 1);
+  setUserInput("");
+
+  if (currentQuestion >= quest.answers.length) {
+
+    setIsCompleted(true);
+
+    const updateIsCompleted = async () => {
+      try {
+        const response = await fetch(`/api/questions/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ isCompleted })
+        });
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    updateIsCompleted();
+
     return <div>Game Over! Your score is {score}</div>;
   }
 
   return (
     <div>
       <div className="images">
-        {questions[currentQuestion].images.map((url, index) => (
-          <img key={index} src={url} alt="Question" />
+        {quest.images[currentQuestion].map((url, index) => (
+          <img key={index} src={url} alt="Image" />
         ))}
       </div>
       <form onSubmit={handleSubmit}>
@@ -56,5 +107,6 @@ const GameComponent = () => {
     </div>
   );
 };
+
 
 export default GameComponent;

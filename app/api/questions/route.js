@@ -51,4 +51,39 @@ export async function POST(request) {
         console.error(err);
         return NextResponse.json({ message: "Server error" }, { status: 500 });
     }
-}
+};
+
+export async function PUT(req) {
+
+    const id = req.query.id;
+    const updatedData = await req.body();
+
+    try {
+        const quest = await QuestionModel.findOne({ id });
+
+        if (!quest) {
+            return NextResponse.json({ message: "Something went wrong!" }, { status: 404 });
+        }
+
+        if (updatedData == isOpened) {
+            quest.isOpened = updatedData.isOpened;   //set to true
+        }
+
+        if (updatedData == isCompleted) {
+            quest.isCompleted = updatedData.isCompleted;   //set to true
+        }
+
+        if (updatedData == isAnswered) {
+            const isAnswered = JSON.parse(quest.isAnswered);
+            isAnswered[id] = updatedData.isAnswered;   //set to true
+        }
+
+        const result = await collection.updateOne({ id: id }, { $set: updatedData });
+        res.status(200).json({ message: `Item with ID ${id} updated successfully` });
+
+    } catch (error) {
+
+        res.status(500).json({ message: 'Error updating item' });
+
+    }
+};
