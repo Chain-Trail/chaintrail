@@ -7,120 +7,14 @@ import { RiMenu3Fill } from "react-icons/ri";
 import { GrFormNextLink } from "react-icons/gr";
 import { MdDelete } from "react-icons/md";
 import Points from "@/app/components/user/Points";
+import { questQuestions } from "./questions";
+import { useTelegramAuth } from "@/app/TelegramAuthProvider";
 
-const questions = [
-  {
-    images: [
-      "../quest/bitcoin.jpg",
-      "../quest/bitcoin2.jpg",
-      "../quest/bitcoin3.jpg",
-      "../quest/bitcoin4.jpg",
-    ],
-    possibleAnswers: [
-      "C",
-      "B",
-      "T",
-      "D",
-      "O",
-      "A",
-      "J",
-      "Z",
-      "A",
-      "T",
-      "D",
-      "O",
-      "I",
-      "F",
-      "F",
-      "N",
-    ],
-    correctAnswer: "BITCOIN",
-  },
-  {
-    images: [
-      "../quest/bitcoin4.jpg",
-      "../quest/bitcoin.jpg",
-      "../quest/bitcoin.jpg",
-      "../quest/bitcoin3.jpg",
-    ],
-    possibleAnswers: [
-      "C",
-      "B",
-      "T",
-      "D",
-      "T",
-      "D",
-      "O",
-      "I",
-      "O",
-      "I",
-      "T",
-      "D",
-      "O",
-      "I",
-      "F",
-      "N",
-    ],
-    correctAnswer: "BITIN",
-  },
-  {
-    images: [
-      "../quest/bitcoin.jpg",
-      "../quest/bitcoin4.jpg",
-      "../quest/bitcoin3.jpg",
-      "../quest/bitcoin3.jpg",
-    ],
-    possibleAnswers: [
-      "C",
-      "B",
-      "T",
-      "D",
-      "T",
-      "D",
-      "O",
-      "I",
-      "O",
-      "I",
-      "T",
-      "D",
-      "O",
-      "I",
-      "F",
-      "N",
-    ],
-    correctAnswer: "BIUUOIN",
-  },
-  {
-    images: [
-      "../quest/bitcoin.jpg",
-      "../quest/bitcoin.jpg",
-      "../quest/bitcoin.jpg",
-      "../quest/bitcoin.jpg",
-    ],
-    possibleAnswers: [
-      "C",
-      "B",
-      "T",
-      "D",
-      "T",
-      "D",
-      "O",
-      "I",
-      "O",
-      "I",
-      "T",
-      "D",
-      "O",
-      "I",
-      "F",
-      "N",
-    ],
-    correctAnswer: "BITCOIN",
-  },
-  // Add 4 more question objects here
-];
+const questions = questQuestions;
 
 const QuestionComponent = () => {
+  const { updatePoints } = useTelegramAuth();
+
   const router = useRouter();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
@@ -148,11 +42,14 @@ const QuestionComponent = () => {
     const correct = submittedAnswer === currentQuestion.correctAnswer;
     setIsCorrect(correct);
     setShowPopup(true);
+    if (correct) {
+      updatePoints(100); // Increase points by 100 for correct answer
+    }
 
-    // Set a timer to move to the next question after 3 seconds
+    // Set a timer to move to the next question
     setTimeout(() => {
       handleNext();
-    }, 3000);
+    }, 2000);
   };
 
   const handleNext = () => {

@@ -65,8 +65,40 @@ export default function TelegramAuthProvider({ children }) {
     }
   }, [userInfo]);
 
+const updatePoints = async (increment) => {
+  setUserPoints((prevPoints) => prevPoints + increment);
+
+  // API call to update the points on the server
+  try {
+    const response = await fetch("/api/points", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userId: userInfo.id, increment }), // Assuming you have userInfo from the context
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to update points on the server");
+    }
+
+    const data = await response.json();
+    console.log("Points updated successfully on the server:", data);
+  } catch (error) {
+    console.error("Error updating points on the server:", error);
+    // Optionally, revert the local points update in case of an error
+    setUserPoints((prevPoints) => prevPoints - increment);
+  }
+};
+
+
+
+
+
+
   return (
-    <TelegramAuthContext.Provider value={{ userInfo, isLoading, userPoints }}>
+    <TelegramAuthContext.Provider
+      value={{ userInfo, isLoading, userPoints, updatePoints }}>
       {children}
     </TelegramAuthContext.Provider>
   );
