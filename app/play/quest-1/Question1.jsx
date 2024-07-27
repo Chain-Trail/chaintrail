@@ -43,7 +43,7 @@ const QuestionComponent = () => {
     setIsCorrect(correct);
     setShowPopup(true);
     if (correct) {
-      updatePoints(100); // Increase points by 100 for correct answer
+      updatePoints(1000); // Increase points by 100 for correct answer
     }
 
     // Set a timer to move to the next question
@@ -166,7 +166,7 @@ const QuestionComponent = () => {
           className={`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 rounded-lg ${
             isCorrect ? "bg-green-500" : "bg-red-500"
           } text-white`}>
-          {isCorrect ? "Correct! You just earned 100 points" : "Incorrect!"}
+          {isCorrect ? "Correct! You just earned 1000 points" : "Incorrect!"}
         </div>
       )}
     </section>

@@ -85,7 +85,7 @@ const updatePoints = async (increment) => {
     const data = await response.json();
     console.log("Points updated successfully on the server:", data);
   } catch (error) {
-    console.error("Error updating points on the server:", error);
+    console.error("Error updating points:", error.message, error.stack);
     // Optionally, revert the local points update in case of an error
     setUserPoints((prevPoints) => prevPoints - increment);
   }
