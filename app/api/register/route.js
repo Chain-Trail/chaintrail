@@ -24,6 +24,7 @@ const UserSchema = new mongoose.Schema(
 
 const User = mongoose.models.User || mongoose.model("User", UserSchema);
 
+
 export async function POST(request) {
   const { userId, username } = await request.json();
 

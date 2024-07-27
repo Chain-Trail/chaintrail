@@ -8,7 +8,7 @@ const GameComponent = () => {
   const [score, setScore] = useState(0);
 
   useEffect(() => {
-    fetch("/api/questions")
+    fetch(`/api/questions/${currentQuestion}`)
       .then((response) => response.json())
       .then((data) => setQuestions(data));
   }, []);
