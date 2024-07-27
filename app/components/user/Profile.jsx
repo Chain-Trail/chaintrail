@@ -2,6 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Popup from "../HomePage/Popup";
 import { useTelegramAuth } from "@/app/TelegramAuthProvider";
+import Button from "../Reusable/Button";
 
 export default function Profile() {
   const { userInfo, isLoading } = useTelegramAuth();
@@ -18,8 +19,8 @@ export default function Profile() {
       <>
         <div
           onClick={openPopup}
-          className="animate-bounce-in-down focus:outline-none cursor-pointer">
-          <Image src="/btn/button2.png" alt="account" width={140} height={32} />
+          className="animate-bounce-in-down focus:outline-none">
+          <Button>CONNECT</Button>
         </div>
         <Popup isOpen={isPopupOpen} onClose={closePopup} />
       </>
