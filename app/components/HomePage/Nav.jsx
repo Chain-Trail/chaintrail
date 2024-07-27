@@ -3,16 +3,10 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Popup from "./Popup";
 import Profile from "../user/Profile";
 
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [isTelegramAvailable, setIsTelegramAvailable] = useState(false);
-
-  const openPopup = () => setIsPopupOpen(true);
-  const closePopup = () => setIsPopupOpen(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,8 +15,6 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-    // Check for Telegram script availability
-    setIsTelegramAvailable(window.Telegram ? true : false);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -46,10 +38,9 @@ const Navbar = () => {
           <span className="text-xl font-bold">CHAIN TRAIL</span>
         </Link>
         <div className="animate-bounce-in-down focus:outline-none">
-          <Profile/>
+          <Profile />
         </div>
       </div>
-      <Popup isOpen={isPopupOpen} onClose={closePopup} />
     </nav>
   );
 };
