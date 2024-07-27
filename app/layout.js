@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./components/HomePage/Nav";
 import TelegramAuthProvider from "./TelegramAuthProvider";
 
+
 const lato = Lato({
   subsets: ["latin"],
   weight: ["400", "700"],

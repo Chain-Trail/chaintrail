@@ -140,7 +140,7 @@ export default function Login() {
   }
 
   return (
-    <div>
+    <div className="hidden">
       <div className="hidden">
         <p>Platform: {window.Telegram.WebApp.platform}</p>
         <p>User ID: {userInfo.id}</p>

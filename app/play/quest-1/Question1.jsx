@@ -9,6 +9,9 @@ import { MdDelete } from "react-icons/md";
 import Points from "@/app/components/user/Points";
 import { questQuestions } from "./questions";
 import { useTelegramAuth } from "@/app/TelegramAuthProvider";
+import Modal from "@/app/components/Reusable/Modal";
+import { Success } from "@/app/components/Reusable/Popup";
+import { Wrong } from "@/app/components/Reusable/Popup";
 
 const questions = questQuestions;
 
@@ -20,7 +23,10 @@ const QuestionComponent = () => {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
   const currentQuestion = questions[currentQuestionIndex];
 
   const handleAnswerClick = (answer) => {
@@ -92,7 +98,7 @@ const QuestionComponent = () => {
           </Link>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-2 place-content-center w-full mx-auto">
+      <div className="grid grid-cols-2 gap-2 place-content-center w-full mx-auto px-4">
         {currentQuestion.images.map((image, index) => (
           <img
             key={index}
@@ -104,7 +110,7 @@ const QuestionComponent = () => {
         ))}
       </div>
       {/* style for input area */}
-      <div className="max-w-[320px] mx-auto bg-neutral-950 text-white px-1 py-2 my-1 flex items-center text-lg">
+      <div className="max-w-[300px] mx-auto bg-neutral-950 text-white px-1 py-2 my-1 flex items-center text-lg">
         <div className="flex mx-auto">
           {Array.from({ length: currentQuestion.correctAnswer.length }).map(
             (_, index) => (
@@ -117,7 +123,6 @@ const QuestionComponent = () => {
           )}
         </div>
       </div>
-
       <div className="mx-auto text-xl max-w-[320px] gap-4 my-2">
         <div className="flex flex-wrap items-center gap-2 justify-center">
           {currentQuestion.possibleAnswers.map((answer, index) => (
@@ -131,7 +136,9 @@ const QuestionComponent = () => {
         </div>
       </div>
       <div className="max-w-[320px] font-bold flex items-center text-lg justify-center py-2 gap-2 mx-auto">
-        <button className="bg-white text-sm text-black py-2 px-2 rounded ">
+        <button
+          onClick={openModal}
+          className="bg-white text-sm text-black py-2 px-2 rounded ">
           GET HINT WITH
           <img
             src="../chaincoins.svg"
@@ -141,6 +148,11 @@ const QuestionComponent = () => {
           />
           20
         </button>
+        <Modal
+          isOpen={isModalOpen}
+          hintText="please set the hint text dynamically. "
+          onClose={closeModal}
+        />
         <button
           className="bg-red-700 active:bg-red-500 px-4 flex flex-col py-1 rounded items-center justify-between cursor-pointer"
           onClick={deleteLast}>
@@ -161,14 +173,8 @@ const QuestionComponent = () => {
           )}
         </span>
       </div>
-      {showPopup && (
-        <div
-          className={`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 rounded-lg ${
-            isCorrect ? "bg-green-500" : "bg-red-500"
-          } text-white`}>
-          {isCorrect ? "Correct! You just earned 1000 points" : "Incorrect!"}
-        </div>
-      )}
+      {/* <Success /> */}
+      {showPopup && <div>{isCorrect ? <Success /> : <Wrong />}</div>}
     </section>
   );
 };
