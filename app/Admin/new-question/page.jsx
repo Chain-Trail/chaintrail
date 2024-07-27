@@ -2,7 +2,6 @@
 import { useState } from "react";
 import UploadFile from "@/app/components/Reusable/UploadFile";
 
-
 const NewQuestion = () => {
   //   const [images1, setImages1] = useState(["", "", "", ""]);
   //   const [images2, setImages2] = useState(["", "", "", ""]);
@@ -122,20 +121,20 @@ const NewQuestion = () => {
             value={q.answer}
             onChange={(e) => handleChange(index, "answer", e.target.value)}
             placeholder="Answer"
-            className="border p-2 rounded"
+            className="border w-32 mx-2 p-2 rounded"
           />
           <input
             type="text"
             value={q.hint}
             onChange={(e) => handleChange(index, "hint", e.target.value)}
             placeholder="Hint"
-            className="border p-2 rounded"
+            className="border w-32 mx-2 p-2 rounded"
           />
         </div>
       ))}
       <button
         onClick={handleAddQuestion}
-        className="bg-blue-500 text-white p-2 rounded">
+        className="bg-yellow-700 hover:bg-yellow-600 p-2 rounded">
         Add Quest
       </button>
     </div>
