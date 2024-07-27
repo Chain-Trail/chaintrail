@@ -43,7 +43,6 @@ export default function TelegramAuthProvider({ children }) {
       console.log(data);
       setRegistrationStatus(data.message);
       setUserPoints(data.points);
-      fetchUserPoints(userInfo.id);
       // Set and fetch user points from registration response
     } catch (error) {
       console.error("Error registering user:", error);
@@ -60,10 +59,14 @@ export default function TelegramAuthProvider({ children }) {
       console.error("Error fetching user points:", error);
     }
   };
+  useEffect(() => {
+    if (userInfo && userInfo.id) {
+      fetchUserPoints(userInfo.id);
+    }
+  }, [userInfo]);
 
   return (
-    <TelegramAuthContext.Provider
-      value={{ userInfo, isLoading, userPoints, registrationStatus }}>
+    <TelegramAuthContext.Provider value={{ userInfo, isLoading, userPoints }}>
       {children}
     </TelegramAuthContext.Provider>
   );
