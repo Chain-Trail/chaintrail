@@ -7,6 +7,8 @@ const TelegramAuthContext = createContext();
 export default function TelegramAuthProvider({ children }) {
   const [userInfo, setUserInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [userPoints, setUserPoints] = useState(true);
+  const [registrationStatus, setRegistrationStatus] = useState("");
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -39,14 +41,29 @@ export default function TelegramAuthProvider({ children }) {
       });
       const data = await response.json();
       console.log(data);
-      // You can handle the registration response here if needed
+      setRegistrationStatus(data.message);
+      setUserPoints(data.points);
+      fetchUserPoints(userInfo.id);
+      // Set and fetch user points from registration response
     } catch (error) {
       console.error("Error registering user:", error);
     }
   };
+  const fetchUserPoints = async (userId) => {
+    try {
+      const response = await fetch(`/api/register?userId=${userId}`);
+      const data = await response.json();
+      if (response.ok) {
+        setUserPoints(data.points);
+      }
+    } catch (error) {
+      console.error("Error fetching user points:", error);
+    }
+  };
 
   return (
-    <TelegramAuthContext.Provider value={{ userInfo, isLoading }}>
+    <TelegramAuthContext.Provider
+      value={{ userInfo, isLoading, userPoints, registrationStatus }}>
       {children}
     </TelegramAuthContext.Provider>
   );
