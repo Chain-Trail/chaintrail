@@ -9,6 +9,8 @@ export default function Login() {
   const [canClaimReward, setCanClaimReward] = useState(false);
   const [timeUntilNextClaim, setTimeUntilNextClaim] = useState(null);
 
+
+  //Get user's info
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://telegram.org/js/telegram-web-app.js";
@@ -28,6 +30,8 @@ export default function Login() {
     };
   }, []);
 
+
+  //Send user's info to the backend
   const registerUser = async (userId, username) => {
     try {
       const response = await fetch("/api/register", {
@@ -46,6 +50,9 @@ export default function Login() {
       setRegistrationStatus("Error registering user");
     }
   };
+
+
+  //Fetch user's current points
   const fetchUserPoints = async (userId) => {
     try {
       const response = await fetch(`/api/register?userId=${userId}`);
@@ -57,6 +64,9 @@ export default function Login() {
       console.error("Error fetching user points:", error);
     }
   };
+
+
+  //Claim daily reward
   const claimDailyReward = async () => {
     if (!userInfo || !userInfo.id) return;
 

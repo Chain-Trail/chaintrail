@@ -4,6 +4,7 @@ import connectDb from "@/lib/mongodb";
 
 await connectDb();
 
+
 export async function POST(request) {
   const { userId, username } = await request.json();
 
