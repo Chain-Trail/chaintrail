@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Image from "next/image";
 import Popup from "../HomePage/Popup";
 import { useTelegramAuth } from "@/app/TelegramAuthProvider";
 import Button from "../Reusable/Button";
@@ -20,7 +19,7 @@ export default function Profile() {
         <div
           onClick={openPopup}
           className="animate-bounce-in-down focus:outline-none">
-          <Button>CONNECT</Button>
+          <Button className="bg-yellow-700 hover:bg-yellow-600">CONNECT</Button>
         </div>
         <Popup isOpen={isPopupOpen} onClose={closePopup} />
       </>

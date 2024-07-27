@@ -59,7 +59,7 @@ const Hero = () => {
         ) : (
           <Button
             href="https://t.me/TWAczbot" // Replace with your actual login page URL
-            className="flex mx-auto text-sm gap-2">
+            className="flex mx-auto text-sm gap-2 bg-yellow-600 hover:bg-yellow-700">
             Play on
             <span className="animate-pulse text-xl">
               <FaTelegram />

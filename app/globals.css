@@ -6,3 +6,6 @@ body {
   @apply bg-[#1F1F1F] text-white w-full  max-w-[450px] m-0 p-0;
 }
 
+input[type=file]{
+    @apply my-2 
+}

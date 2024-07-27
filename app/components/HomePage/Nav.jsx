@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import Profile from "../user/Profile";
@@ -8,6 +9,7 @@ import { cinzel } from "../Reusable/Font";
 
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,13 +23,16 @@ const Navbar = () => {
     };
   }, []);
 
+  // Check if the current path starts with '/play'
+  const showNavbar = pathname ? !pathname.startsWith("/play/") : true;
+
+  if (!showNavbar) return null; // Hide Navbar if the path starts with '/play/'
+
   return (
     <nav
-      className={`   ${
+      className={`fixed top-0 left-0 text-xs right-0 z-50 transition-all duration-300 ${
         cinzel.className
-      } fixed top-0 left-0 text-xs right-0 z-50 transition-all duration-300 ${
-        isSticky ? "bg-neutral-950 shadow-md" : "bg-transparent"
-      }`}>
+      } ${isSticky ? "bg-neutral-950 shadow-md" : "bg-transparent"}`}>
       <div className="mx-auto px-4 py-2 flex justify-between items-center">
         <Link
           href="/"

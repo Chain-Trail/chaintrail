@@ -12,6 +12,7 @@ import { useTelegramAuth } from "@/app/TelegramAuthProvider";
 import Modal from "@/app/components/Reusable/Modal";
 import { Success } from "@/app/components/Reusable/Popup";
 import { Wrong } from "@/app/components/Reusable/Popup";
+import { Complete } from "@/app/components/Reusable/Popup";
 
 const questions = questQuestions;
 
@@ -24,7 +25,8 @@ const QuestionComponent = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+const [isCompleted, setIsCompleted] = useState(false);
+const [showComplete, setShowComplete] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   const currentQuestion = questions[currentQuestionIndex];
@@ -43,39 +45,47 @@ const QuestionComponent = () => {
     setSelectedAnswers(selectedAnswers.slice(0, -1));
   };
 
-  const handleSubmit = (answers = selectedAnswers) => {
-    const submittedAnswer = answers.join("");
-    const correct = submittedAnswer === currentQuestion.correctAnswer;
-    setIsCorrect(correct);
-    setShowPopup(true);
-    if (correct) {
-      updatePoints(1000); // Increase points by 100 for correct answer
-    }
+const handleSubmit = (answers = selectedAnswers) => {
+  const submittedAnswer = answers.join("");
+  const correct = submittedAnswer === currentQuestion.correctAnswer;
+  setIsCorrect(correct);
+  setShowPopup(true);
 
+  if (correct) {
+    updatePoints(1000);
+  }
+
+  if (currentQuestionIndex === questions.length - 1) {
+    setIsCompleted(true);
+    // Set a timer to show the Complete page after 2 seconds
+    setTimeout(() => {
+      setShowComplete(true);
+    }, 2000);
+  } else {
     // Set a timer to move to the next question
     setTimeout(() => {
       handleNext();
     }, 2000);
-  };
+  }
+};
+const handleNext = () => {
+  if (isCompleted || showComplete) {
+    router.push("/"); // Redirect to homepage when completed
+  } else {
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
+    setSelectedAnswers([]);
+    setShowPopup(false);
+  }
+};
 
-  const handleNext = () => {
-    if (currentQuestionIndex === questions.length - 1) {
-      router.push("/"); // Redirect to homepage on last question
-    } else {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setSelectedAnswers([]);
+useEffect(() => {
+  if (showPopup && !isCompleted) {
+    const timer = setTimeout(() => {
       setShowPopup(false);
-    }
-  };
-
-  useEffect(() => {
-    if (showPopup) {
-      const timer = setTimeout(() => {
-        setShowPopup(false);
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [showPopup]);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }
+}, [showPopup, isCompleted]);
 
   return (
     <section>
@@ -173,8 +183,17 @@ const QuestionComponent = () => {
           )}
         </span>
       </div>
-      {/* <Success /> */}
-      {showPopup && <div>{isCorrect ? <Success /> : <Wrong />}</div>}
+      {showPopup && (
+        <div>
+          {isCompleted && showComplete ? (
+            <Complete />
+          ) : isCorrect ? (
+            <Success />
+          ) : (
+            <Wrong />
+          )}
+        </div>
+      )}
     </section>
   );
 };

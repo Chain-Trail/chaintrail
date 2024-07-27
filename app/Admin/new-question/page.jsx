@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useState } from "react";
 
 const NewQuestion = () => {
@@ -34,20 +34,45 @@ const NewQuestion = () => {
   const [hint10, setHint10] = useState("");
   const [quest, setQuest] = useState({});
 
-
   const handleAddQuestion = () => {
-
     setQuest({
       images: [
-        images1, images2, images3, images4, images5, images6, images7, images8, images9, images10
+        images1,
+        images2,
+        images3,
+        images4,
+        images5,
+        images6,
+        images7,
+        images8,
+        images9,
+        images10,
       ],
       answers: [
-        answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10
+        answer1,
+        answer2,
+        answer3,
+        answer4,
+        answer5,
+        answer6,
+        answer7,
+        answer8,
+        answer9,
+        answer10,
       ],
       hints: [
-        hint1, hint2, hint3, hint4, hint5, hint6, hint7, hint8, hint9, hint10
-      ]
-    })
+        hint1,
+        hint2,
+        hint3,
+        hint4,
+        hint5,
+        hint6,
+        hint7,
+        hint8,
+        hint9,
+        hint10,
+      ],
+    });
 
     fetch("/api/questions", {
       method: "POST",
@@ -86,7 +111,6 @@ const NewQuestion = () => {
         onChange={(e) => setHint1(e.target.value)}
         placeholder="Hint"
       />
-
       {/* Second Question */}
       Second Question:
       {images2.map((url, index) => (
@@ -106,7 +130,7 @@ const NewQuestion = () => {
         type="text"
         value={answer2}
         onChange={(e) => setAnswer2(e.target.value)}
-        placeholder='Answer'
+        placeholder="Answer"
       />
       <input
         type="text"
@@ -114,7 +138,6 @@ const NewQuestion = () => {
         onChange={(e) => setHint2(e.target.value)}
         placeholder="Hint"
       />
-
       {/* Third Question */}
       Third Question:
       {images3.map((url, index) => (
@@ -134,7 +157,7 @@ const NewQuestion = () => {
         type="text"
         value={answer3}
         onChange={(e) => setAnswer3(e.target.value)}
-        placeholder='Answer'
+        placeholder="Answer"
       />
       <input
         type="text"
@@ -142,7 +165,6 @@ const NewQuestion = () => {
         onChange={(e) => setHint3(e.target.value)}
         placeholder="Hint"
       />
-
       {/* Fourth question */}
       Fourth Question:
       {images4.map((url, index) => (
@@ -162,7 +184,7 @@ const NewQuestion = () => {
         type="text"
         value={answer4}
         onChange={(e) => setAnswer4(e.target.value)}
-        placeholder='Answer'
+        placeholder="Answer"
       />
       <input
         type="text"
@@ -170,7 +192,6 @@ const NewQuestion = () => {
         onChange={(e) => setHint4(e.target.value)}
         placeholder="Hint"
       />
-
       {/* Fifth question*/}
       Fifth Question:
       {images5.map((url, index) => (
@@ -190,7 +211,7 @@ const NewQuestion = () => {
         type="text"
         value={answer5}
         onChange={(e) => setAnswer5(e.target.value)}
-        placeholder='Answer'
+        placeholder="Answer"
       />
       <input
         type="text"
@@ -198,7 +219,6 @@ const NewQuestion = () => {
         onChange={(e) => setHint5(e.target.value)}
         placeholder="Hint"
       />
-
       {/* Sixth question */}
       Sixth Question:
       {images6.map((url, index) => (
@@ -218,7 +238,7 @@ const NewQuestion = () => {
         type="text"
         value={answer6}
         onChange={(e) => setAnswer6(e.target.value)}
-        placeholder='Answer'
+        placeholder="Answer"
       />
       <input
         type="text"
@@ -226,7 +246,6 @@ const NewQuestion = () => {
         onChange={(e) => setHint6(e.target.value)}
         placeholder="Hint"
       />
-
       {/* Seventh question */}
       Seventh Question:
       {images7.map((url, index) => (
@@ -246,7 +265,7 @@ const NewQuestion = () => {
         type="text"
         value={answer7}
         onChange={(e) => setAnswer7(e.target.value)}
-        placeholder='Answer'
+        placeholder="Answer"
       />
       <input
         type="text"
@@ -254,7 +273,6 @@ const NewQuestion = () => {
         onChange={(e) => setHint7(e.target.value)}
         placeholder="Hint"
       />
-
       {/* Eighth question */}
       Eighth Question:
       {images8.map((url, index) => (
@@ -274,7 +292,7 @@ const NewQuestion = () => {
         type="text"
         value={answer8}
         onChange={(e) => setAnswer8(e.target.value)}
-        placeholder='Answer'
+        placeholder="Answer"
       />
       <input
         type="text"
@@ -282,7 +300,6 @@ const NewQuestion = () => {
         onChange={(e) => setHint8(e.target.value)}
         placeholder="Hint"
       />
-
       {/* Ninth question */}
       Ninth Question:
       {images9.map((url, index) => (
@@ -302,7 +319,7 @@ const NewQuestion = () => {
         type="text"
         value={answer9}
         onChange={(e) => setAnswer9(e.target.value)}
-        placeholder='Answer'
+        placeholder="Answer"
       />
       <input
         type="text"
@@ -310,7 +327,6 @@ const NewQuestion = () => {
         onChange={(e) => setHint9(e.target.value)}
         placeholder="Hint"
       />
-
       {/* Tenth question */}
       Tenth Question:
       {images10.map((url, index) => (
@@ -330,7 +346,7 @@ const NewQuestion = () => {
         type="text"
         value={answer10}
         onChange={(e) => setAnswer10(e.target.value)}
-        placeholder='Answer'
+        placeholder="Answer"
       />
       <input
         type="text"

@@ -15,7 +15,7 @@ const Play = () => {
       id: 2,
       name: "Quest 2",
       status: "play now",
-      href: "#",
+      href: "/Admin/new-question",
       img: "https://img.freepik.com/free-vector/cryptocurrency-bitcoin-golden-coin-background_1017-31505.jpg?",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic asperiores accusamus officia quidem ab optio reprehenderit accusantium quasi praesentium assumenda.",
     },
