@@ -29,18 +29,6 @@ export const Success = () => {
             <div className="text-xl  max-w-[300px]">
               You picked the right answer and you earned +1000 coins
             </div>
-            <div className="flex text-xs gap-2 my-6">
-              <Button
-                href="/"
-                className="bg-neutral-950 text-yellow-500 hover:bg-slate-950 z-10  border border-yellow-700">
-                Home
-              </Button>
-              <Button
-                href="/play/quest2"
-                className="bg-yellow-600 hover:bg-yellow-700">
-                Next
-              </Button>
-            </div>
           </div>
         </div>
       </div>
@@ -74,18 +62,6 @@ export const Wrong = () => {
             <div className="text-xl  max-w-[300px]">
               You picked the wrong answer and earned +0 points
             </div>
-            <div className="flex text-xs gap-2 my-6">
-              <Button
-                href="/"
-                className="bg-neutral-950 text-yellow-500 hover:bg-slate-950 z-10  border border-yellow-700">
-                Home
-              </Button>
-              <Button
-                href="/play/quest2"
-                className="bg-yellow-600 hover:bg-yellow-700">
-                Next
-              </Button>
-            </div>
           </div>
         </div>
       </div>
@@ -114,7 +90,9 @@ export const Complete = () => {
               height={1000}
               className="w-[70%] mx-auto"
             />
-            <h1 className="text-3xl font-extrabold mb-4 mx-auto">Congratulations!</h1>
+            <h1 className="text-3xl font-extrabold mb-4 mx-auto">
+              Congratulations!
+            </h1>
 
             <div className="text-xl  max-w-[300px]">
               You have completed this quest. We hope you enjoy playing our game
