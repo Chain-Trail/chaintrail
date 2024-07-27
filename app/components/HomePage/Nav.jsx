@@ -3,14 +3,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Popup from "./Popup";
+import Profile from "../user/Profile";
 
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  const openPopup = () => setIsPopupOpen(true);
-  const closePopup = () => setIsPopupOpen(false);
   useEffect(() => {
     const handleScroll = () => {
       setIsSticky(window.scrollY > 0);
@@ -40,13 +37,10 @@ const Navbar = () => {
           />
           <span className="text-xl font-bold">CHAIN TRAIL</span>
         </Link>
-        <button
-          onClick={openPopup}
-          className="animate-bounce-in-down focus:outline-none">
-          <Image src="/btn/button2.png" alt="Button" width={140} height={32} />
-        </button>
+        <div className="animate-bounce-in-down focus:outline-none">
+          <Profile />
+        </div>
       </div>
-      <Popup isOpen={isPopupOpen} onClose={closePopup} />
     </nav>
   );
 };

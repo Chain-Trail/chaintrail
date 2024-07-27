@@ -1,28 +1,8 @@
 import { NextResponse } from "next/server";
-import mongoose from "mongoose";
+import User from "@/models/User";
+import connectDb from "@/lib/mongodb";
 
-const MONGODB_URI = process.env.MONGODB_URI;
-
-if (!MONGODB_URI) {
-  throw new Error(" MONGODB_URI is missing or incorrect");
-}
-
-mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-const UserSchema = new mongoose.Schema(
-  {
-    userId: String,
-    username: String,
-    points: { type: Number, default: 950 },
-    lastClaimTimestamp: { type: Date },
-  },
-  { timestamps: true }
-);
-
-const User = mongoose.models.User || mongoose.model("User", UserSchema);
+await connectDb();
 
 
 export async function POST(request) {
