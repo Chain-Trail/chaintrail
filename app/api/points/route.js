@@ -1,17 +1,9 @@
 import User from "@/models/User";
 import connectDb from "@/lib/mongodb";
 import { NextResponse } from "next/server";
-// New route for updating user points
 
-await connectDb();
-
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return NextResponse.json(
-      { message: "Method not allowed" },
-      { status: 405 }
-    );
-  }
+export async function POST(req) {
+  await connectDb();
 
   const { userId, increment } = await req.json();
 
