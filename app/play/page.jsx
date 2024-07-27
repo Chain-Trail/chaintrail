@@ -15,7 +15,7 @@ const Play = () => {
       id: 2,
       name: "Quest 2",
       status: "play now",
-      href: "#",
+      href: "/Admin/new-question",
       img: "https://img.freepik.com/free-vector/cryptocurrency-bitcoin-golden-coin-background_1017-31505.jpg?",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic asperiores accusamus officia quidem ab optio reprehenderit accusantium quasi praesentium assumenda.",
     },
@@ -145,19 +145,18 @@ const Play = () => {
               </span>
             </div>
             <div className="mx-4 pb-2 text-xs text-neutral-400 text-justify">
-              {" "}
               {quest.desc}
             </div>
 
             <div className="flex justify-between gap-2 items-center text-xs">
               <span className="border border-gray-500 p-1 rounded">
-                1 unique NFT{" "}
+                1 unique NFT
               </span>
               <span className="border border-gray-500 p-1 rounded">
-                1000 points{" "}
-              </span>{" "}
+                10,000 points
+              </span>
               <span className="border border-gray-500 p-1 rounded">
-                10 questions{" "}
+                10 questions
               </span>
             </div>
           </Link>

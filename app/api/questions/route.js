@@ -8,13 +8,14 @@ export async function GET(request) {
     // const id = req.query.id;
 
     const { searchParams } = new URL(request.URL);
-    const id = searchParams.get("id")
+    const id = searchParams.get("id");
 
     try {
         const questionModel = await QuestionModel.findOne({ id });
 
         if (questionModel) {
             const data = questionModel;
+            console.log(data);
 
             return NextResponse.json({ data });
         } else {
@@ -35,7 +36,18 @@ export async function POST(request) {
     //     isCompleted: false
     // }
 
-    const isAnswered = [false, false, false, false, false, false, false, false, false, false];
+    const isAnswered = [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+    ];
 
     const quests = new QuestionModel({
         questNumber,
@@ -55,7 +67,6 @@ export async function POST(request) {
 };
 
 export async function PUT(req) {
-
     const id = req.query.id;
     const updatedData = await req.body();
 
@@ -86,5 +97,36 @@ export async function PUT(req) {
 
         res.status(500).json({ message: 'Error updating item' });
 
+        if (!quest) {
+            return NextResponse.json(
+                { message: "Something went wrong!" },
+                { status: 404 }
+            );
+        }
+
+        if (updatedData == isOpened) {
+            quest.isOpened = updatedData.isOpened; //set to true
+        }
+
+        if (updatedData == isCompleted) {
+            quest.isCompleted = updatedData.isCompleted; //set to true
+        }
+
+        if (updatedData == isAnswered) {
+            const isAnswered = JSON.parse(quest.isAnswered);
+            isAnswered[id] = updatedData.isAnswered; //set to true
+        }
+
+        try {
+            const result = await collection.updateOne(
+                { id: id },
+                { $set: updatedData }
+            );
+            res
+                .status(200)
+                .json({ message: `Item with ID ${id} updated successfully` });
+        } catch (error) {
+            res.status(500).json({ message: "Error updating item" });
+        }
     }
-};
+}

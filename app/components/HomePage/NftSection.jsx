@@ -67,7 +67,7 @@ const NFTSection = () => {
       </div>
 
       <div className="text-center mt-10">
-        <Button href="/play">Play Now</Button>
+        <Button className="bg-yellow-700 hover:bg-yellow-600" href="/play">Play Now</Button>
       </div>
     </div>
   );
