@@ -1,16 +1,27 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
+import { useTelegramAuth } from "@/app/TelegramAuthProvider";
 import { useEffect, useState } from "react";
 import { FaTelegram } from "react-icons/fa";
+import Button from "../Reusable/Button";
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
+  const { userInfo, isLoading } = useTelegramAuth();
+  if (isLoading) {
+    return (
+      <Button href="/play" className="flex mx-auto text-sm gap-2">
+        play now
+        <span className="animate-pulse text-xl">
+          <FaTelegram />
+        </span>
+      </Button>
+    );
+  }
 
   return (
     <div className="relative h-screen bg-black flex flex-col items-center justify-center">
@@ -34,18 +45,27 @@ const Hero = () => {
           STUDIO
         </h1>
 
-        <p className="text-white mb-6 mx-12">
+        <p className="text-white mb-6 mx-12 text-lg">
           Embark on Word Trails, to learn about blockchains
         </p>
 
-        <Link
-          href="https://t.me/TWAczbot"
-          className="bg-yellow-600 text-neutral-900  font-extrabold py-2 px-8 rounded-lg mb-2 hover:bg-yellow-700 transition duration-300 flex gap-2 items-center justify-center w-fit mx-auto">
-          <span>PLAY NOW</span>
-          <span className="animate-pulse text-xl">
-            <FaTelegram />
-          </span>
-        </Link>
+        {userInfo ? (
+          <Button href="/play" className="flex mx-auto text-sm gap-2">
+            play now
+            <span className="animate-pulse text-xl">
+              <FaTelegram />
+            </span>
+          </Button>
+        ) : (
+          <Button
+            href="https://t.me/TWAczbot" // Replace with your actual login page URL
+            className="flex mx-auto text-sm gap-2">
+            Play on
+            <span className="animate-pulse text-xl">
+              <FaTelegram />
+            </span>
+          </Button>
+        )}
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Profile from "../user/Profile";
+import { cinzel } from "../Reusable/Font";
 
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -22,7 +23,9 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`   ${
+        cinzel.className
+      } fixed top-0 left-0 text-xs right-0 z-50 transition-all duration-300 ${
         isSticky ? "bg-neutral-950 shadow-md" : "bg-transparent"
       }`}>
       <div className="mx-auto px-4 py-2 flex justify-between items-center">

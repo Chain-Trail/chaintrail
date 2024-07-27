@@ -10,16 +10,16 @@ const Footer = () => {
       github: "https://github.com/KevinChibuoyim",
     },
     {
-      name: "Okeke Chinedu Emmanuel",
-      role: "Frontend Developer",
-      image: "/team/photo_2024-07-24_20-23-00.jpg",
-      github: "https://github.com/chiscookeke11",
-    },
-    {
       name: "Damian Olebuezie ",
       role: "Smart Contract Developer",
       image: "/team/photo_2024-07-25_02-29-08.jpg",
       github: "https://github.com/czDamian",
+    },
+    {
+      name: "Okeke Chinedu Emmanuel",
+      role: "Frontend Developer",
+      image: "/team/photo_2024-07-24_20-23-00.jpg",
+      github: "https://github.com/chiscookeke11",
     },
     {
       name: "Agbasieje Peace Chioma",
@@ -32,10 +32,11 @@ const Footer = () => {
       role: "Backend Developer",
       image: "/team/photo_2024-07-25_02-29-03.jpg",
       github: "https://github.com/Prnzwil",
-    },{
+    },
+    {
       name: "Osatuyi Flora",
       role: "UI/UX Designer",
-      image: "/team/photo_2024-07-25_02-29-03.jpg",
+      image: "/team/Flora.jpg",
       github: "https://x.com/oluwa_chioma",
     },
   ];
@@ -44,8 +45,8 @@ const Footer = () => {
     <footer className=" w-full bg-neutral-900 py-12">
       <div className=" px-4">
         <div className="">
-          <div className="bg-neutral-950 p-2 my-4 rounded-lg">
-            <h1 className="text-3xl font-bold mb-6">Meet Our Team</h1>
+          <div className="bg-neutral-800 p-2 my-4 rounded-lg">
+            <h1 className="text-3xl text-center font-bold mb-6">Meet Our Team</h1>
             <div className="">
               {teamMembers.map((member, index) => (
                 <Link
@@ -54,7 +55,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block">
-                  <div className=" overflow-hidden flex items-center justify-start hover:bg-slate-950 rounded-lg px-1">
+                  <div className=" overflow-hidden flex items-center justify-start hover:bg-neutral-950 rounded-lg px-1">
                     <Image
                       src={member.image}
                       alt={member.name}
@@ -64,7 +65,7 @@ const Footer = () => {
                     />
                     <div className="p-4">
                       <h5 className="font-bold">{member.name}</h5>
-                      <p className="text-gray-600">{member.role}</p>
+                      <p className="text-neutral-500">{member.role}</p>
                     </div>
                   </div>
                 </Link>
