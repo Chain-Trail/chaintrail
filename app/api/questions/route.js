@@ -3,6 +3,7 @@ import QuestionModel from '../models/questionModel'
 export async function GET(request) {
     // const userId = request.nextUrl.searchParams.get("id");
 
+    // Try this one if it generates error
     // const id = req.query.id;
 
     const { searchParams } = new URL(request.URL);
@@ -12,7 +13,7 @@ export async function GET(request) {
         const questionModel = await QuestionModel.findOne({ id });
 
         if (questionModel) {
-            const data = JSON.parse(questionModel.questions);
+            const data = questionModel;
 
             return NextResponse.json({ data });
         } else {
