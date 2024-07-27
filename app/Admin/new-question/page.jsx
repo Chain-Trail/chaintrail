@@ -33,6 +33,7 @@ const NewQuestion = () => {
   const [hint9, setHint9] = useState("");
   const [hint10, setHint10] = useState("");
   const [quest, setQuest] = useState({});
+  const [questNumber, setQuestNumber] = useState(0);
 
 
   const handleAddQuestion = () => {
@@ -49,13 +50,45 @@ const NewQuestion = () => {
       ]
     })
 
-    fetch("/api/questions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ quest }),
-    }).then((response) => response.json());
+    useEffect(() => {
+      async function fetchData() {
+        try {
+          //Get Quest Number (ID)
+          const response1 = await fetch('/api/QuestNumber');
+          const data1 = await response1.json();
+          setQuestNumber(data1 + 1);
+
+          //Update Quest Number
+          const response2 = await fetch("/api/QuestNumber", {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ questNumber }),
+          });
+          const data2 = await response2.json();
+          alert(data2.message);
+
+          //Tag Quest Number to quest
+          const response3 = await fetch("/api/questions", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ quest, questNumber }),
+          });
+          const data3 = await response3.json();
+
+          alert(data3.message);
+
+        } catch (error) {
+          console.error(error);
+          alert("Could not send quest to database - ", error.message);
+        }
+      }
+
+      fetchData();
+    }, []);
   };
 
   return (

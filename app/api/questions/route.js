@@ -1,4 +1,5 @@
-import QuestionModel from '../models/questionModel'
+import QuestionModel from '../models/questionModel';
+import NumberOfQuestsModel from "../models/numberOfQuest";
 
 export async function GET(request) {
     // const userId = request.nextUrl.searchParams.get("id");
@@ -26,7 +27,7 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
-    const { quest } = await request.json();
+    const { quest, questNumber } = await request.json();
 
     // const quests = {
     //     quest,
@@ -37,7 +38,7 @@ export async function POST(request) {
     const isAnswered = [false, false, false, false, false, false, false, false, false, false];
 
     const quests = new QuestionModel({
-        id: 0,
+        questNumber,
         quest,
         isAnswered: JSON.stringify(isAnswered),
         isOpened: false,
@@ -49,7 +50,7 @@ export async function POST(request) {
         return NextResponse.json({ message: "Saved successfully" });
     } catch (err) {
         console.error(err);
-        return NextResponse.json({ message: "Server error" }, { status: 500 });
+        return NextResponse.json({ message: "Server error - Check questions>route" }, { status: 500 });
     }
 };
 
@@ -78,8 +79,8 @@ export async function PUT(req) {
             isAnswered[id] = updatedData.isAnswered;   //set to true
         }
 
-        const result = await collection.updateOne({ id: id }, { $set: updatedData });
-        res.status(200).json({ message: `Item with ID ${id} updated successfully` });
+        // const result = await collection.updateOne({ id: id }, { $set: updatedData });
+        // res.status(200).json({ message: `Item with ID ${id} updated successfully` });
 
     } catch (error) {
 

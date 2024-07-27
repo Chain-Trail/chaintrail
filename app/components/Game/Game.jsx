@@ -11,7 +11,7 @@ const GameComponent = () => {
   const [isCompleted, setIsCompleted] = useState(hackQuest.isCompleted)
 
   useEffect(() => {
-    fetch(`/api/questions/${currentQuestion}`)
+    fetch("/api/questions/")
       .then((response) => response.json())
       .then((data) => setHackQuest(data));
   }, []);
