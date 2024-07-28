@@ -3,6 +3,39 @@ import { useState } from "react";
 import UploadFile from "@/app/components/Reusable/UploadFile";
 
 const NewQuestion = () => {
+  //   const [images1, setImages1] = useState(["", "", "", ""]);
+  //   const [images2, setImages2] = useState(["", "", "", ""]);
+  //   const [images3, setImages3] = useState(["", "", "", ""]);
+  //   const [images4, setImages4] = useState(["", "", "", ""]);
+  //   const [images5, setImages5] = useState(["", "", "", ""]);
+  //   const [images6, setImages6] = useState(["", "", "", ""]);
+  //   const [images7, setImages7] = useState(["", "", "", ""]);
+  //   const [images8, setImages8] = useState(["", "", "", ""]);
+  //   const [images9, setImages9] = useState(["", "", "", ""]);
+  //   const [images10, setImages10] = useState(["", "", "", ""]);
+  //   const [answer1, setAnswer1] = useState("");
+  //   const [answer2, setAnswer2] = useState("");
+  //   const [answer3, setAnswer3] = useState("");
+  //   const [answer4, setAnswer4] = useState("");
+  //   const [answer5, setAnswer5] = useState("");
+  //   const [answer6, setAnswer6] = useState("");
+  //   const [answer7, setAnswer7] = useState("");
+  //   const [answer8, setAnswer8] = useState("");
+  //   const [answer9, setAnswer9] = useState("");
+  //   const [answer10, setAnswer10] = useState("");
+  //   const [hint1, setHint1] = useState("");
+  //   const [hint2, setHint2] = useState("");
+  //   const [hint3, setHint3] = useState("");
+  //   const [hint4, setHint4] = useState("");
+  //   const [hint5, setHint5] = useState("");
+  //   const [hint6, setHint6] = useState("");
+  //   const [hint7, setHint7] = useState("");
+  //   const [hint8, setHint8] = useState("");
+  //   const [hint9, setHint9] = useState("");
+  //   const [hint10, setHint10] = useState("");
+  //   const [quest, setQuest] = useState({});
+  //   const [questNumber, setQuestNumber] = useState(0);
+
   const [questions, setQuestions] = useState(
     Array.from({ length: 10 }, () => ({
       images: ["", "", "", ""],
@@ -18,13 +51,45 @@ const NewQuestion = () => {
       hints: questions.map((q) => q.hint),
     };
 
-    fetch("/api/questions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ quest }),
-    }).then((response) => response.json());
+    useEffect(() => {
+      async function fetchData() {
+        try {
+          //Get Quest Number (ID)
+          const response1 = await fetch('/api/QuestNumber');
+          const data1 = await response1.json();
+          setQuestNumber(data1 + 1);
+
+          //Update Quest Number
+          const response2 = await fetch("/api/QuestNumber", {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ questNumber }),
+          });
+          const data2 = await response2.json();
+          alert(data2.message);
+
+          //Tag Quest Number to quest
+          const response3 = await fetch("/api/questions", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ quest, questNumber }),
+          });
+          const data3 = await response3.json();
+
+          alert(data3.message);
+
+        } catch (error) {
+          console.error(error);
+          alert("Could not send quest to database - ", error.message);
+        }
+      }
+
+      fetchData();
+    }, []);
   };
 
   const handleChange = (index, field, value) => {
