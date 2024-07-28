@@ -1,9 +1,10 @@
-// app/Admin/CreateQuestQuestion.js
+// app/components/CreateQuestQuestion.js
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function CreateQuestQuestion() {
-  const [questId, setQuestId] = useState('');
+  const [quests, setQuests] = useState([]);
+  const [selectedQuestId, setSelectedQuestId] = useState('');
   const [question, setQuestion] = useState({
     questImage1: '',
     questImage2: '',
@@ -13,6 +14,28 @@ export default function CreateQuestQuestion() {
     questPossibleAnswers: ['', '', '', ''],
     isAnswered: false
   });
+
+  useEffect(() => {
+    fetchQuests();
+  }, []);
+
+  const fetchQuests = async () => {
+    try {
+      const response = await fetch('/api/quests');
+      if (response.ok) {
+        const data = await response.json();
+        setQuests(data);
+        if (data.length > 0) {
+          setSelectedQuestId(data[0]._id);
+        }
+      } else {
+        throw new Error('Failed to fetch quests');
+      }
+    } catch (error) {
+      console.error('Error fetching quests:', error);
+      alert('Failed to fetch quests. Please try again.');
+    }
+  };
 
   const handleChange = (e) => {
     setQuestion({ ...question, [e.target.name]: e.target.value });
@@ -27,7 +50,7 @@ export default function CreateQuestQuestion() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`/api/quests/${questId}/questions`, {
+      const response = await fetch(`/api/quests/${selectedQuestId}/questions`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(question)
@@ -57,15 +80,20 @@ export default function CreateQuestQuestion() {
       <h2 className="text-2xl font-bold mb-6 text-yellow-600">Add Quest Question</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="questId" className="block text-gray-700 mb-2">Quest ID</label>
-          <input
-            type="text"
-            id="questId"
-            value={questId}
-            onChange={(e) => setQuestId(e.target.value)}
+          <label htmlFor="questSelect" className="block text-gray-700 mb-2">Select Quest</label>
+          <select
+            id="questSelect"
+            value={selectedQuestId}
+            onChange={(e) => setSelectedQuestId(e.target.value)}
             required
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-          />
+          >
+            {quests.map((quest) => (
+              <option key={quest._id} value={quest._id}>
+                {quest.questName}
+              </option>
+            ))}
+          </select>
         </div>
         {['questImage1', 'questImage2', 'questImage3', 'questImage4'].map((field) => (
           <div key={field}>
