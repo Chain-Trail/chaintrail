@@ -36,7 +36,7 @@ export async function GET() {
     const quests = await Quest.find({});
     return NextResponse.json(quests);
   } catch (error) {
-    console.error('Error fetching quests:', error);
+    console.error("Error fetching quests:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
