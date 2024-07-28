@@ -30,8 +30,23 @@ const QuestionComponent = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   const currentQuestion = questions[currentQuestionIndex];
+  const buttonSound =
+    typeof Audio !== "undefined" ? new Audio("/btn/pick.mp3") : null;
+  const SuccessSound =
+    typeof Audio !== "undefined" ? new Audio("/btn/correct.mp3") : null;
+  const wrongSound =
+    typeof Audio !== "undefined" ? new Audio("/btn/fail.mp3") : null;
+  const congratsSound =
+    typeof Audio !== "undefined" ? new Audio("/btn/congrats.mp3") : null;
 
   const handleAnswerClick = (answer) => {
+    // Play the button sound
+    if (buttonSound) {
+      buttonSound
+        .play()
+        .catch((error) => console.error("Error playing sound:", error));
+    }
+
     const newSelectedAnswers = [...selectedAnswers, answer];
     setSelectedAnswers(newSelectedAnswers);
 
@@ -42,6 +57,12 @@ const QuestionComponent = () => {
   };
 
   const deleteLast = () => {
+    // Play the button sound
+    if (buttonSound) {
+      buttonSound
+        .play()
+        .catch((error) => console.error("Error playing sound:", error));
+    }
     setSelectedAnswers(selectedAnswers.slice(0, -1));
   };
 
@@ -52,24 +73,47 @@ const QuestionComponent = () => {
     setShowPopup(true);
 
     if (correct) {
+      // Play the button sound
+      if (SuccessSound) {
+        SuccessSound.play().catch((error) =>
+          console.error("Error playing sound:", error)
+        );
+      }
       updatePoints(1000);
+    } else {
+      // Play the wrong answer sound
+      if (wrongSound) {
+        wrongSound.play().catch((error) =>
+          console.error("Error playing wrong sound:", error)
+        );
+      }
     }
 
-    if (currentQuestionIndex === questions.length - 1) {
-      setIsCompleted(true);
-      // Set a timer to show the Complete page after 2 seconds
-      setTimeout(() => {
-        setShowComplete(true);
-      }, 800);
-    } else {
-      // Set a timer to move to the next question
-      setTimeout(() => {
-        handleNext();
-      }, 800);
-    }
+
+   if (currentQuestionIndex === questions.length - 1) {
+     setIsCompleted(true);
+     // Set a timer to show the Complete page after 4 seconds
+     setTimeout(() => {
+       setShowComplete(true);
+       // Play the congratulations sound 1 second after showing the complete page
+       setTimeout(() => {
+         if (congratsSound) {
+           congratsSound
+             .play()
+             .catch((error) => console.error("Error playing sound:", error));
+         }
+       }, 1000);
+     }, 4000);
+   } else {
+     // Set a timer to move to the next question
+     setTimeout(() => {
+       handleNext();
+     }, 1500);
+   }
   };
   const handleNext = () => {
     if (isCompleted || showComplete) {
+      
       console.log("Quest completed"); // Redirect to homepage when completed or console a message
     } else {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -151,7 +195,7 @@ const QuestionComponent = () => {
             className="flex-grow bg-white text-black py-2 px-4 rounded text-sm font-bold flex items-center justify-center">
             GET HINT WITH
             <img src="../chaincoins.svg" className="w-5 h-8 ml-2" alt="hint" />
-            <span className="ml-1">20</span>
+            <span className="ml-1">200</span>
           </button>
           <Modal
             isOpen={isModalOpen}

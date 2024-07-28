@@ -134,9 +134,9 @@ export const Complete = () => {
             </div>
             <div className="flex text-xs gap-2 my-6">
               <Button
-                href="/"
+                href="/play"
                 className="bg-neutral-950 text-yellow-500 hover:bg-slate-950 z-10  border border-yellow-700">
-                Home
+                Back
               </Button>
               <Button
                 href="/play/quest2"
