@@ -7,7 +7,7 @@ import Quest from "@/models/QuestQuestionSchema";
 export async function POST(request) {
   try {
     // Connect to the database
-    await dbConnect();
+    await connectDb();
     console.log("Connected to the database");
 
     // Parse the request body
