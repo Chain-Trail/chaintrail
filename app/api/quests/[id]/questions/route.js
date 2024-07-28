@@ -2,7 +2,7 @@
 
 import { NextResponse } from 'next/server';
 import connectDb from '@/lib/mongodb';
-import Quest from '@/models/Quest';
+import Quest from '@/models/QuestQuestionSchema';
 
 export async function POST(request, { params }) {
   try {
