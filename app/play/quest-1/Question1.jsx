@@ -8,6 +8,7 @@ import { MdDelete } from "react-icons/md";
 import Points from "@/app/components/user/Points";
 import { questQuestions } from "./questions";
 import { useTelegramAuth } from "@/app/TelegramAuthProvider";
+import SideNav from "@/app/components/Reusable/SideNav";
 import Modal from "@/app/components/Reusable/Modal";
 import { Success } from "@/app/components/Reusable/Popup";
 import { Wrong } from "@/app/components/Reusable/Popup";
@@ -103,11 +104,7 @@ const QuestionComponent = () => {
             {currentQuestionIndex + 1}/{questions.length}
           </span>
         </div>
-        <div className="text-2xl">
-          <Link href="/" className="block">
-            <RiMenu3Fill title="home" />
-          </Link>
-        </div>
+        <SideNav />
       </div>
       {/* header ends and image list starts */}
       <section className="max-w-[320px]">

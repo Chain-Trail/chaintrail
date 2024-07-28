@@ -43,53 +43,59 @@ const NewQuestion = () => {
       hint: "",
     }))
   );
+  const [questNumber, setQuestNumber] = useState(0);
 
-  const handleAddQuestion = () => {
+  useEffect(() => {
+    async function fetchQuestNumber() {
+      try {
+        const response = await fetch("/api/QuestNumber");
+        const data = await response.json();
+        setQuestNumber(data + 1);
+      } catch (error) {
+        console.error("Error fetching quest number:", error);
+      }
+    }
+
+    fetchQuestNumber();
+  }, []);
+
+  const handleAddQuestion = async () => {
     const quest = {
       images: questions.map((q) => q.images),
       answers: questions.map((q) => q.answer),
       hints: questions.map((q) => q.hint),
     };
 
-    useEffect(() => {
-      async function fetchData() {
-        try {
-          //Get Quest Number (ID)
-          const response1 = await fetch('/api/QuestNumber');
-          const data1 = await response1.json();
-          setQuestNumber(data1 + 1);
+    try {
+      // Update Quest Number
+      const response2 = await fetch("/api/QuestNumber", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ questNumber }),
+      });
+      const data2 = await response2.json();
+      alert(data2.message);
 
-          //Update Quest Number
-          const response2 = await fetch("/api/QuestNumber", {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ questNumber }),
-          });
-          const data2 = await response2.json();
-          alert(data2.message);
+      // Tag Quest Number to quest and send to database
+      const response3 = await fetch("/api/questions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ quest, questNumber }),
+      });
+      const data3 = await response3.json();
 
-          //Tag Quest Number to quest
-          const response3 = await fetch("/api/questions", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ quest, questNumber }),
-          });
-          const data3 = await response3.json();
+      alert(data3.message);
 
-          alert(data3.message);
-
-        } catch (error) {
-          console.error(error);
-          alert("Could not send quest to database - ", error.message);
-        }
-      }
-
-      fetchData();
-    }, []);
+      // Increment quest number for next question
+      setQuestNumber((prevNumber) => prevNumber + 1);
+    } catch (error) {
+      console.error(error);
+      alert("Could not send quest to database - " + error.message);
+    }
   };
 
   const handleChange = (index, field, value) => {
