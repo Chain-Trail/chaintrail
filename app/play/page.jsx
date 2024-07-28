@@ -1,49 +1,46 @@
-import { FaChevronLeft } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa";
-
-import Image from "next/image";
+import SideNav from "../components/Reusable/SideNav";
 import Link from "next/link";
 
 const Play = () => {
   const quests = [
     {
       id: 1,
-      name: "Quest 1",
+      name: "Alpha Mind",
       status: "play now",
       href: "/play/quest-1",
-      img: "https://img.freepik.com/free-vector/cryptocurrency-bitcoin-golden-coin-background_1017-31505.jpg?",
+      img: "/mainNft1.svg",
       desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
     {
       id: 2,
-      name: "Quest 2",
+      name: "Chain Quest",
       status: "play now",
       href: "/Admin/new-question",
-      img: "https://img.freepik.com/free-vector/cryptocurrency-bitcoin-golden-coin-background_1017-31505.jpg?",
+      img: "/mainNft1.svg",
       desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
     {
       id: 3,
-      name: "Quest 3",
+      name: "God's Eye",
       status: "play now",
       href: "#",
-      img: "https://img.freepik.com/free-vector/cryptocurrency-bitcoin-golden-coin-background_1017-31505.jpg?",
+      img: "/quest/bitcoin2.jpg",
       desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
     {
       id: 4,
-      name: "Quest 4",
+      name: "IQ Trail",
       status: "locked",
       href: "#",
-      img: "https://img.freepik.com/free-vector/cryptocurrency-bitcoin-golden-coin-background_1017-31505.jpg?",
+      img: "/mainNft2.svg",
       desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
     {
       id: 5,
-      name: "Quest 5",
+      name: "Block Map",
       status: "locked",
       href: "#",
-      img: "https://img.freepik.com/free-vector/cryptocurrency-bitcoin-golden-coin-background_1017-31505.jpg?",
+      img: "/quest/bitcoin3.jpg",
       desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
     {
@@ -51,7 +48,7 @@ const Play = () => {
       name: "Quest 6",
       status: "locked",
       href: "#",
-      img: "https://img.freepik.com/free-vector/cryptocurrency-bitcoin-golden-coin-background_1017-31505.jpg?",
+      img: "/mainNft3.svg",
       desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
     {
@@ -132,9 +129,8 @@ const Play = () => {
     <section className="mt-20 min-w-[300px] w-full">
       <h1 className="flex justify-between items-center mx-4 my-2">
         <div className="font-bold text-lg">Quests</div>
-        <div className="flex gap-3 cursor-pointer">
-          <FaChevronLeft />
-          <FaChevronRight />
+        <div className="flex gap-2 cursor-pointer">
+         <SideNav/>
         </div>
       </h1>
       <div className=" w-full ">
