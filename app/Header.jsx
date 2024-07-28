@@ -4,6 +4,7 @@ import NFTSection from "./components/HomePage/NftSection";
 import HowToPlay from "./components/HomePage/HowToPlay";
 import Partners from "./components/HomePage/Partners";
 import Hero from "./components/HomePage/Hero";
+import Daily from "./components/HomePage/Daily";
 
 export default function Header() {
   return (
@@ -11,6 +12,7 @@ export default function Header() {
       <Hero />
       <NFTSection />
       <HowToPlay />
+      <Daily />
       <Partners />
       <Footer />
       <Login />
