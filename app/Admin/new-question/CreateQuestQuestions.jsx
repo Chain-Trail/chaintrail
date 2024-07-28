@@ -49,13 +49,17 @@ export default function CreateQuestQuestion() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Submitting question:", question);
     try {
       const response = await fetch(`/api/quests/${selectedQuestId}/questions`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(question)
       });
+      console.log("Response status:", response.status);
       if (response.ok) {
+        const data = await response.json();
+        console.log("Response data:", data);
         alert('Quest question added successfully!');
         setQuestion({
           questImage1: '',
@@ -67,11 +71,13 @@ export default function CreateQuestQuestion() {
           isAnswered: false
         });
       } else {
-        throw new Error('Failed to add quest question');
+        const errorData = await response.json();
+        console.error("Failed to add quest question:", errorData);
+        throw new Error(errorData.error || 'Failed to add quest question');
       }
     } catch (error) {
       console.error('Error adding quest question:', error);
-      alert('Failed to add quest question. Please try again.');
+      alert('server error. Please try again.');
     }
   };
 
