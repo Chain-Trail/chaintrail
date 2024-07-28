@@ -15,6 +15,9 @@ const SideNav = () => {
     { href: "/referrals", title: "Referrals" },
     { href: "/daily-reward", title: "Daily Rewards" },
     { href: "/more", title: "Earn More Points" },
+    { href: "/Admin/new-quest", title: "Create Quest" },
+    { href: "/Admin/new-question", title: "Add Questions" },
+
   ];
 
   return (
