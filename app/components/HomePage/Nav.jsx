@@ -23,8 +23,16 @@ const Navbar = () => {
     };
   }, []);
 
-  // Check if the current path starts with '/play'
-  const showNavbar = pathname ? !pathname.startsWith("/play/") : true;
+  const hiddenPaths = [
+    "/daily-reward",
+    "/referrals",
+    "/collection",
+    "/referrals",
+    "/more",
+  ];
+  const showNavbar = pathname
+    ? !hiddenPaths.some((path) => pathname.startsWith(path))
+    : true;
 
   if (!showNavbar) return null; // Hide Navbar if the path starts with '/play/'
 

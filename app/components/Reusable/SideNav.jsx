@@ -11,10 +11,10 @@ const SideNav = () => {
   const navLinks = [
     { href: "/", title: "Home" },
     { href: "/play", title: "Quests" },
-    { href: "/play", title: "My Collections" },
-    { href: "/play", title: "Referrals" },
-    { href: "/play", title: "Daily Rewards" },
-    { href: "/play", title: "Earn More Points" },
+    { href: "/collection", title: "My Collections" },
+    { href: "/referrals", title: "Referrals" },
+    { href: "/daily-reward", title: "Daily Rewards" },
+    { href: "/more", title: "Earn More Points" },
   ];
 
   return (

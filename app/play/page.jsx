@@ -1,6 +1,11 @@
 import SideNav from "../components/Reusable/SideNav";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Quests",
+  description: "earn NFTs while playing your favorite game",
+};
+
 const Play = () => {
   const quests = [
     {
