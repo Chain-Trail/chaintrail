@@ -14,7 +14,7 @@ const Hero = () => {
   const { userInfo, isLoading } = useTelegramAuth();
   if (isLoading) {
     return (
-      <Button href="/play" className="flex mx-auto text-sm gap-2">
+      <Button href="/play" className="flex mx-auto text-yellow-500 text-sm gap-2">
         play now
         <span className="animate-pulse text-xl">
           <FaTelegram />
