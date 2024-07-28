@@ -9,20 +9,6 @@ import Nfts from "./Nfts";
 const Referrals = () => {
   return (
     <section className="px-8">
-      <div className="p-3 flex justify-between font-bold border border-neutral-900 hover:border-neutral-100 hover:border cursor-pointer">
-        <span className="flex items-center gap-2">
-          <img src="chaincoins.svg" alt="Chain Coins" />
-          <span>1005</span>
-        </span>
-        <span className="text-2xl flex gap-2 font-extrabold ">
-          <Link href="/play">
-            <PiCaretRightBold className=" " title="back arrow" />
-          </Link>
-          <Link href="/">
-            <RiMenu3Fill title="home" />
-          </Link>
-        </span>
-      </div>
       <div className="">
         <h1 className="my-4 px-4">EARN MORE POINTS</h1>
         <div className="flex  gap-4 items-center justify-center ">
