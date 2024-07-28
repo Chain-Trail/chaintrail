@@ -49,8 +49,11 @@ const NewQuestion = () => {
     async function fetchQuestNumber() {
       try {
         const response = await fetch("/api/QuestNumber");
+        if (!response.ok) {
+          throw new Error("Failed to fetch quest number");
+        }
         const data = await response.json();
-        setQuestNumber(data + 1);
+        setQuestNumber(data);
       } catch (error) {
         console.error("Error fetching quest number:", error);
       }
@@ -68,33 +71,36 @@ const NewQuestion = () => {
 
     try {
       // Update Quest Number
-      const response2 = await fetch("/api/QuestNumber", {
+      const response = await fetch("/api/QuestNumber", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ questNumber }),
+        body: JSON.stringify({ questNumber: questNumber + 1 }),
       });
-      const data2 = await response2.json();
-      alert(data2.message);
+      if (!response.ok) {
+        throw new Error("Failed to update quest number");
+      }
+      const data = await response.json();
+      setQuestNumber(data.newNumber);
 
       // Tag Quest Number to quest and send to database
-      const response3 = await fetch("/api/questions", {
+      const questResponse = await fetch("/api/questions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ quest, questNumber }),
       });
-      const data3 = await response3.json();
+      if (!questResponse.ok) {
+        throw new Error("Failed to send quest to database");
+      }
+      const questData = await questResponse.json();
 
-      alert(data3.message);
-
-      // Increment quest number for next question
-      setQuestNumber((prevNumber) => prevNumber + 1);
+      alert(questData.message);
     } catch (error) {
       console.error(error);
-      alert("Could not send quest to database - " + error.message);
+      alert("Error: " + error.message);
     }
   };
 

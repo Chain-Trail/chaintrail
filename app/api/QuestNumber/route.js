@@ -2,37 +2,45 @@ import { NextResponse } from "next/server";
 import NumberOfQuestsModel from "../models/numberOfQuest";
 import connectDb from "@/lib/mongodb";
 
-await connectDb();
-
-
 export async function GET() {
+  try {
+    await connectDb();
+    const questionModel = await NumberOfQuestsModel.findOne();
 
-    try {
-        const questionModel = await NumberOfQuestsModel.find().toArray();
-
-        if (questionModel) {
-            const data = questionModel;
-
-            return NextResponse.json({ data });
-        } else {
-            return NextResponse.json({ message: "Quest not found" }, { status: 404 });
-        }
-    } catch (err) {
-        console.error(err);
-        // return NextResponse.json({ message: "Server error" }, { status: 500 });
+    if (questionModel) {
+      return NextResponse.json(questionModel.NumberOfQuests);
+    } else {
+      return NextResponse.json(
+        { message: "Quest number not found" },
+        { status: 404 }
+      );
     }
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json({ message: "Server error" }, { status: 500 });
+  }
 }
 
 export async function PUT(req) {
-    const id = req.query.id;
-    const updatedData = await req.body();
+  try {
+    await connectDb();
+    const { questNumber } = await req.json();
 
-    try {
-        const questNumber = await NumberOfQuestsModel.findOne({ id });
+    const result = await NumberOfQuestsModel.findOneAndUpdate(
+      {},
+      { $set: { NumberOfQuests: questNumber } },
+      { upsert: true, new: true }
+    );
 
-        questNumber.NumberOfQuests = updatedData;
-        return NextResponse.json({ message: "Updated Successfully" }, { status: 200 });
-    } catch (err) {
-        return NextResponse.json({ message: "Server error: Could not update" }, { status: 500 });
-    }
+    return NextResponse.json(
+      { message: "Updated Successfully", newNumber: result.NumberOfQuests },
+      { status: 200 }
+    );
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json(
+      { message: "Server error: Could not update" },
+      { status: 500 }
+    );
+  }
 }

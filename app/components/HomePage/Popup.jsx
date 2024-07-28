@@ -1,7 +1,6 @@
-import { FaTelegram } from "react-icons/fa";
-import { MdNoEncryption } from "react-icons/md";
-import { CiWallet } from "react-icons/ci";
 import { GrClose } from "react-icons/gr";
+import Image from "next/image";
+import Link from "next/link";
 
 const Popup = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -14,31 +13,23 @@ const Popup = ({ isOpen, onClose }) => {
             <button
               onClick={onClose}
               className="text-gray-500 my-2 p-1 hover:text-gray-700">
-            <GrClose/>
+              <GrClose />
             </button>
           </div>
 
-          <div className="space-y-4">
-            <a
-              href="#"
-              className="flex items-center justify-between p-2 hover:bg-gray-100 rounded">
-              <p className="text-gray-700">Connect MetaMask</p>
-              <MdNoEncryption className="text-3xl" />
-            </a>
-            <div className="border-t border-gray-200"></div>
-            <a
-              href="#"
-              className="flex items-center justify-between p-2 hover:bg-gray-100 rounded">
-              <p className="text-gray-700">Connect Wallet</p>
-              <CiWallet className="text-3xl" />
-            </a>
-            <div className="border-t border-gray-200"></div>
-            <a
-              href="#"
-              className="flex items-center justify-between p-2 hover:bg-gray-100 rounded">
-              <p className="text-gray-700">Play on Telegram</p>
-              <FaTelegram className="text-3xl" />
-            </a>
+          <div className="space-y-8 py-4">
+            <Link
+              href="#connectWallet"
+              className="flex items-center justify-between p-2 hover:bg-slate-900 rounded">
+              <p>Connect Wallet</p>
+              <Image src="metamask.svg" width={30} height={30} alt="metamask" />
+            </Link>
+            <Link
+              href="https://t.me/TWAczbot"
+              className="flex items-center justify-between p-2 hover:bg-slate-900 rounded">
+              <p>Play on Telegram</p>
+              <Image src="telegram.svg" width={30} height={30} alt="metamask" />
+            </Link>
           </div>
         </div>
       </div>
