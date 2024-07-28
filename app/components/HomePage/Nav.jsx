@@ -39,7 +39,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 text-xs right-0 z-50 transition-all duration-300 ${
+      className={`fixed px-4 top-0 left-0 text-xs right-0 z-50 transition-all duration-300 ${
         cinzel.className
       } ${isSticky ? "bg-neutral-950 shadow-md" : "bg-transparent"}`}>
       <div className="mx-auto px-4 py-2 flex justify-between items-center">
@@ -52,7 +52,7 @@ const Navbar = () => {
             width={30}
             height={30}
           />
-          <span className="text-xl font-bold">CHAIN TRAIL</span>
+          <span className="text-xl font-extrabold hover:text-yellow-500">CHAIN TRAIL</span>
         </Link>
         <div className="animate-bounce-in-down focus:outline-none">
           <Profile />

@@ -42,7 +42,6 @@ const steps = [
 
 const HowToPlay = () => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -52,18 +51,14 @@ const HowToPlay = () => {
     return () => clearInterval(timer);
   }, [currentStep]);
   const nextStep = () => {
-    setIsAnimating(true);
     setTimeout(() => {
       setCurrentStep((prev) => (prev + 1) % steps.length);
-      setIsAnimating(false);
     }, 2000);
   };
 
   const prevStep = () => {
-    setIsAnimating(true);
     setTimeout(() => {
       setCurrentStep((prev) => (prev - 1 + steps.length) % steps.length);
-      setIsAnimating(false);
     }, 2000);
   };
 
@@ -77,9 +72,7 @@ const HowToPlay = () => {
         <div className="bg-neutral-950 rounded-lg shadow-lg overflow-hidden">
           <div className="p-6 relative">
             <div
-              className={`transition-opacity duration-500 ${
-                isAnimating ? "opacity-0" : "opacity-100"
-              }`}>
+              className="transition-opacity duration-500">
               <h1 className="text-2xl font-bold text-center mb-4">
                 {steps[currentStep].step}
               </h1>

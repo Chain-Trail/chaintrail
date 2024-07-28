@@ -6,7 +6,7 @@ const Partners = () => {
       <div className="">
         <h2 className="text-2xl font-bold my-2">PARTNERS</h2>
         <p className="my-3">Know Our Partners & Sponsors</p>
-        <Button className=" bg-gradient-to-b  from-[#1F1F1F] to-[#1F1F1F]  hover:from-[#1F1F1F]  hover:to-[#1F1F1F] focus:outline-none active:brightness-50">
+        <Button className=" bg-gradient-to-b  from-[#1F1F1F] to-[#1F1F1F]  hover:from-[#1F1F1F]  hover:to-[#1F1F1F] my-4 focus:outline-none active:brightness-50">
           coming soon
         </Button>
       </div>

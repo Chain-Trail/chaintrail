@@ -28,7 +28,7 @@ export default function Profile() {
         <div
           onClick={openPopup}
           className="animate-bounce-in-down focus:outline-none">
-          <Button className="bg-yellow-700 hover:bg-yellow-600">CONNECT</Button>
+          <Button className="border border-white">CONNECT</Button>
         </div>
         <Popup isOpen={isPopupOpen} onClose={closePopup} />
       </>

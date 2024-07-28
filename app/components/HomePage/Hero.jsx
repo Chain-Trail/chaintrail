@@ -14,7 +14,9 @@ const Hero = () => {
   const { userInfo, isLoading } = useTelegramAuth();
   if (isLoading) {
     return (
-      <Button href="/play" className="flex mx-auto text-yellow-500 text-sm gap-2">
+      <Button
+        href="/play"
+        className="flex mx-auto text-yellow-500 text-sm md:text-lg gap-2">
         play now
         <span className="animate-pulse text-xl">
           <FaTelegram />
@@ -35,22 +37,27 @@ const Hero = () => {
 
       <div className="z-10 text-center">
         <h1
-          className={`text-5xl font-serif text-white mb-4 transition-all duration-100 ease-out ${
+          className={`text-5xl md:text-7xl font-serif text-white mb-4 transition-all duration-100 ease-out ${
             isVisible
               ? "translate-x-0 opacity-100"
               : "-translate-x-full opacity-0"
           }`}>
-          CHAIN TRAIL
-          <br />
-          STUDIO
+          CHAIN TRAIL <div className="mt-4">STUDIO</div>
         </h1>
 
-        <p className="text-white mb-6 mx-12 text-lg">
-          Embark on Word Trails, to learn about blockchains
+        <p className="text-white mb-12 mx-12 text-lg md:text-xl ">
+          Embark on Word Trails, learn about blockchain
         </p>
+        <Button
+          href="/play"
+          className="flex px-8 mb-4 mx-auto text-sm gap-2 text-black bg-yellow-500 py-3">
+          play now
+        </Button>
 
         {userInfo ? (
-          <Button href="/play" className="flex mx-auto text-sm gap-2">
+          <Button
+            href="/play"
+            className="flex mx-auto text-sm gap-2 md:text-2xl">
             play now
             <span className="animate-pulse text-xl">
               <FaTelegram />
@@ -59,7 +66,7 @@ const Hero = () => {
         ) : (
           <Button
             href="https://t.me/TWAczbot" // Replace with your actual login page URL
-            className="flex mx-auto text-sm gap-2 bg-yellow-600 hover:bg-yellow-700">
+            className="flex mx-auto text-sm gap-2 bg-black hover:bg-neutral-950 outline">
             Play on
             <span className="animate-pulse text-xl">
               <FaTelegram />

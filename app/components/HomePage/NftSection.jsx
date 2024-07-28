@@ -2,73 +2,37 @@
 import Image from "next/image";
 import Button from "../Reusable/Button";
 
-const NFTCard = ({ title, nftImage, qrImage }) => (
-  <div className="bg-neutral-950 rounded-md overflow-hidden text-xs] mb-2">
-    <div className="flex flex-col justify-between items-center">
-      <h5 className=" py-2 text-center">{title}</h5>
-      <div>
-        <Image
-          src={nftImage}
-          alt={title}
-          width={1000}
-          height={1000}
-          className="w-full hover:brightness-75"
-        />
-        <Image
-          src={qrImage}
-          alt="QR Code"
-          width={1000}
-          height={1000}
-          className="w-full hover:brightness-75"
-        />
-      </div>
-    </div>
-  </div>
-);
-
 const NFTSection = () => {
-  const nftData = [
-    {
-      title: "ALPHA MIND",
-      nftImage: "/mainNft1.svg",
-      qrImage: "/scanNft.svg",
-    },
-    {
-      title: "MYSTERY MINT",
-      nftImage: "/mainNft2.svg",
-      qrImage: "/scanNft.svg",
-    },
-    {
-      title: "GOD'S EYE",
-      nftImage: "/mainNft3.svg",
-      qrImage: "/scanNft.svg",
-    },
-    {
-      title: "MYSTERY MINT",
-      nftImage: "/mainNft2.svg",
-      qrImage: "/scanNft.svg",
-    },
-  ];
+  const nftImages = ["/nft1.png", "/nft2.png", "/nft3.png"];
 
   return (
-    <div className=" bg-[#151515] py-12">
+    <div className="bg-[#151515] py-12">
       <div className="text-center mb-8">
         <h2 className="text-4xl font-bold mb-4 animate__animated">
           UNIQUE NFTS
         </h2>
-        <p className="text-lg mx-12 text-gray-300">
+        <p className="text-lg text-gray-300">
           Earn Unique NFTS on completing each game & quest
         </p>
       </div>
 
-      <div className="grid mx-auto grid-cols-2 md:grid-cols-4 w-fit place-content-center place-items-center gap-2 px-4">
-        {nftData.map((nft, index) => (
-          <NFTCard key={index} {...nft} />
+      <div className="flex flex-row flex-wrap justify-center w-full">
+        {nftImages.map((nftImage, index) => (
+          <Image
+            key={index}
+            src={nftImage}
+            alt={`NFT ${index + 1}`}
+            width={400}
+            height={600}
+            className="hover:scale-105 w-fit max-w-[180px] min-h-[400px] md:max-w-[200px] md:min-h-[450px]"
+          />
         ))}
       </div>
 
       <div className="text-center mt-10">
-        <Button className="bg-yellow-700 hover:bg-yellow-600" href="/play">
+        <Button
+          className="bg-yellow-700 hover:bg-yellow-600 text-black py-3"
+          href="/play">
           Play Now
         </Button>
       </div>
