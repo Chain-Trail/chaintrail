@@ -180,6 +180,7 @@ const QuestionComponent = () => {
           </div>
         )}
       </section>
+      <Success />
     </section>
   );
 };

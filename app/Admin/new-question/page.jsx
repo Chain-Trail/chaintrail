@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import UploadFile from "@/app/components/Reusable/UploadFile";
 
 const NewQuestion = () => {
