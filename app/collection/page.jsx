@@ -13,10 +13,7 @@ const images = [
     img3: "mainNft3.svg",
     scan: "scanNft.svg",
   },
-  {
-    img3: "lockedNft1.svg",
-    // scan: "scanNft.svg",
-  },
+ 
 ];
 
 const Collection = () => {
@@ -27,7 +24,7 @@ const Collection = () => {
         <SideNav />
       </div>
 
-      <div className=" flex flex-row flex-wrap gap-4 items-center">
+      <div className="justify-center flex flex-row flex-wrap gap-4 items-center">
         {images.map((item, index) => (
           <div key={index}>
             <div className="rounded-xl overflow-hidden">

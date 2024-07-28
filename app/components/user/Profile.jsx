@@ -9,8 +9,17 @@ export default function Profile() {
   const openPopup = () => setIsPopupOpen(true);
   const closePopup = () => setIsPopupOpen(false);
 
-  if (isLoading) {
-    return <div className="text-xs">verifying...</div>;
+  if (isLoading){
+    return (
+      <>
+        <div
+          onClick={openPopup}
+          className="animate-bounce-in-down focus:outline-none">
+          <Button className="bg-yellow-700 hover:bg-yellow-600">CONNECT</Button>
+        </div>
+        <Popup isOpen={isPopupOpen} onClose={closePopup} />
+      </>
+    );
   }
 
   if (!userInfo) {

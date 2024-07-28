@@ -23,7 +23,7 @@ const Play = () => {
       name: "Chain Quest",
       status: "play",
       href: "/Admin/new-question",
-      img: "/mainNft1.svg",
+      img: "/mainNft2.svg",
       desc: "Payers are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain, with players earning tokens as they solve puzzles.",
     },
     {
@@ -133,14 +133,14 @@ const Play = () => {
   ];
 
   return (
-    <section className="mt-20 min-w-[300px] w-full">
-      <h1 className="flex justify-between items-center mx-4 my-2">
-        <div className="font-bold text-lg">Quests</div>
+    <section>
+      <h1 className="flex justify-between items-center mx-4 my-2 py-2">
+        <div className="font-bold text-2xl">QUESTS</div>
         <div className="flex gap-2 cursor-pointer">
           <SideNav />
         </div>
       </h1>
-      <div className=" w-full ">
+      <div className=" w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
         {quests.map((quest) => (
           <Link
             key={quest.id}

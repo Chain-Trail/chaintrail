@@ -2,7 +2,7 @@ import Button from "../Reusable/Button";
 
 const Partners = () => {
   return (
-    <div className="bg-neutral-950 p-12 rounded-md mb-8 text-center">
+    <div className="bg-neutral-950 p-12 rounded-lg mb-8 text-center m-2 mx-4">
       <div className="">
         <h2 className="text-2xl font-bold my-2">PARTNERS</h2>
         <p className="my-3">Know Our Partners & Sponsors</p>

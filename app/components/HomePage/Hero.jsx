@@ -24,7 +24,7 @@ const Hero = () => {
   }
 
   return (
-    <div className="relative h-screen bg-black flex flex-col items-center justify-center">
+    <div className="relative w-screen h-screen bg-black flex flex-col items-center justify-center">
       <Image
         width={1000}
         height={1000}

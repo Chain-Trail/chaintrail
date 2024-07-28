@@ -1,26 +1,27 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import Button from "../Reusable/Button";
 
 const NFTCard = ({ title, nftImage, qrImage }) => (
-  <div className="bg-neutral-950 rounded overflow-hidden text-xs">
-    <h5 className=" py-2 text-center">{title}</h5>
+  <div className="bg-neutral-950 rounded-md overflow-hidden text-xs] mb-2">
     <div className="flex flex-col justify-between items-center">
-      <Image
-        src={nftImage}
-        alt={title}
-        width={100}
-        height={100}
-        className="w-full hover:brightness-75"
-      />
-      <Image
-        src={qrImage}
-        alt="QR Code"
-        width={100}
-        height={100}
-        className="w-full hover:brightness-75"
-      />
+      <h5 className=" py-2 text-center">{title}</h5>
+      <div>
+        <Image
+          src={nftImage}
+          alt={title}
+          width={1000}
+          height={1000}
+          className="w-full hover:brightness-75"
+        />
+        <Image
+          src={qrImage}
+          alt="QR Code"
+          width={1000}
+          height={1000}
+          className="w-full hover:brightness-75"
+        />
+      </div>
     </div>
   </div>
 );
@@ -60,14 +61,16 @@ const NFTSection = () => {
         </p>
       </div>
 
-      <div className="grid mx-auto grid-cols-2 w-fit place-content-center place-items-center gap-2 px-4">
+      <div className="grid mx-auto grid-cols-2 md:grid-cols-4 w-fit place-content-center place-items-center gap-2 px-4">
         {nftData.map((nft, index) => (
           <NFTCard key={index} {...nft} />
         ))}
       </div>
 
       <div className="text-center mt-10">
-        <Button className="bg-yellow-700 hover:bg-yellow-600" href="/play">Play Now</Button>
+        <Button className="bg-yellow-700 hover:bg-yellow-600" href="/play">
+          Play Now
+        </Button>
       </div>
     </div>
   );

@@ -46,8 +46,10 @@ const Footer = () => {
       <div className=" px-4">
         <div className="">
           <div className="bg-neutral-800 p-2 my-4 rounded-lg">
-            <h1 className="text-3xl text-center font-bold mb-6">Meet Our Team</h1>
-            <div className="">
+            <h1 className="text-3xl text-center font-bold mb-6">
+              Meet Our Team
+            </h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
               {teamMembers.map((member, index) => (
                 <Link
                   key={index}
@@ -100,8 +102,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="mt-8 text-center text-gray-600">
-        <span>2024 CryptoTrail</span>
+      <div className="mt-8 text-center">
+        <span>(c) 2024 CryptoTrail</span>
       </div>
     </footer>
   );
