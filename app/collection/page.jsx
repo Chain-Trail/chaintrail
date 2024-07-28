@@ -21,22 +21,24 @@ const images = [
 
 const Collection = () => {
   return (
-    <div className="my-8 mx-4">
-      <div className="flex justify-between mr-4 items-center">
+    <div className="my-6 mx-4">
+      <div className="flex justify-between mr-4 items-center bg-yellow-800 rounded mb-4">
         <h1 className="my-4 px-4">MY COLLECTIONS</h1>
         <SideNav />
       </div>
 
       <div className=" flex flex-row flex-wrap gap-4 items-center">
         {images.map((item, index) => (
-          <div key={index} className="bg-neutral-700 w-[160px] rounded-xl">
-            <h1 className="bg-yellow-600 py-2 text-black text-center font-bold w-full ">
-              NFT
-            </h1>
-            <div className="p-2">
-              <p className="font-bold text-sm my-1">ALPHA MIND</p>
+          <div key={index}>
+            <div className="rounded-xl overflow-hidden">
               {Object.keys(item).map((key, idx) => (
-                <img loading="lazy" key={idx} src={item[key]} alt={key} className="w-full" />
+                <img
+                  loading="lazy"
+                  key={idx}
+                  src={item[key]}
+                  alt={key}
+                  className="w-full"
+                />
               ))}
             </div>
           </div>

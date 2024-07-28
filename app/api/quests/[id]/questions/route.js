@@ -24,26 +24,11 @@ export async function POST(request, { params }) {
     }
 
 
-<<<<<<< HEAD
     return NextResponse.json(
       { message: "Question added successfully" },
       { status: 201 }
     );
   } catch (error) {
-=======
-    // Validate the incoming question data
-    if (!body.questImage1 || !body.questImage2 || !body.questImage3 || !body.questImage4 || !body.questHints || !Array.isArray(body.questPossibleAnswers)) {
-      return NextResponse.json({ error: 'Invalid question data' }, { status: 400 });
-    }
-
-    // Add the new question to the quest's questQuestions array
-    quest.questQuestions.push(body);
-    const updatedQuest = await quest.save();
-    console.log("Question added to quest:", updatedQuest);
-
-    return NextResponse.json({ message: 'Question added successfully', quest: updatedQuest }, { status: 201 });
-  } ccatch (error) {
->>>>>>> 435b60e2750752cd77e450922eb98669a35b6cff
     console.error("Error adding question to quest:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
