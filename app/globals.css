@@ -9,6 +9,6 @@ body {
 input[type=file]{
     @apply my-2 ;
 }
-input{
-   @apply bg-inherit text-inherit
+input, select, textarea{
+   @apply text-black
 }

@@ -14,7 +14,7 @@ const Play = () => {
       status: "play now",
       href: "/play/quest-1",
       img: "/mainNft1.svg",
-      desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
+      desc: "Players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
     {
       id: 2,
@@ -22,7 +22,7 @@ const Play = () => {
       status: "play now",
       href: "/Admin/new-question",
       img: "/mainNft1.svg",
-      desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
+      desc: "Payers are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
     {
       id: 3,
@@ -30,7 +30,7 @@ const Play = () => {
       status: "play now",
       href: "#",
       img: "/quest/bitcoin2.jpg",
-      desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
+      desc: "Players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
     {
       id: 4,
@@ -38,7 +38,7 @@ const Play = () => {
       status: "locked",
       href: "#",
       img: "/mainNft2.svg",
-      desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
+      desc: "Players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
     {
       id: 5,
@@ -46,7 +46,7 @@ const Play = () => {
       status: "locked",
       href: "#",
       img: "/quest/bitcoin3.jpg",
-      desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
+      desc: "Players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
     {
       id: 6,
@@ -54,7 +54,7 @@ const Play = () => {
       status: "locked",
       href: "#",
       img: "/mainNft3.svg",
-      desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
+      desc: "Players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
     {
       id: 7,
@@ -62,7 +62,7 @@ const Play = () => {
       status: "locked",
       href: "#",
       img: "https://img.freepik.com/free-vector/cryptocurrency-bitcoin-golden-coin-background_1017-31505.jpg?",
-      desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
+      desc: "Players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
     {
       id: 8,
@@ -70,7 +70,7 @@ const Play = () => {
       status: "locked",
       href: "#",
       img: "https://img.freepik.com/free-vector/cryptocurrency-bitcoin-golden-coin-background_1017-31505.jpg?",
-      desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
+      desc: "Players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
     {
       id: 9,
@@ -78,7 +78,7 @@ const Play = () => {
       status: "locked",
       href: "#",
       img: "https://img.freepik.com/free-vector/cryptocurrency-bitcoin-golden-coin-background_1017-31505.jpg?",
-      desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
+      desc: "Players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
     {
       id: 10,
@@ -86,7 +86,7 @@ const Play = () => {
       status: "locked",
       href: "#",
       img: "https://img.freepik.com/free-vector/cryptocurrency-bitcoin-golden-coin-background_1017-31505.jpg?",
-      desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
+      desc: "Players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
     {
       id: 11,
@@ -94,7 +94,7 @@ const Play = () => {
       status: "locked",
       href: "#",
       img: "https://img.freepik.com/free-vector/cryptocurrency-bitcoin-golden-coin-background_1017-31505.jpg?",
-      desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
+      desc: "Players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
     {
       id: 12,
@@ -102,7 +102,7 @@ const Play = () => {
       status: "locked",
       href: "#",
       img: "https://img.freepik.com/free-vector/cryptocurrency-bitcoin-golden-coin-background_1017-31505.jpg?",
-      desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
+      desc: "Players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
     {
       id: 13,
@@ -110,7 +110,7 @@ const Play = () => {
       status: "locked",
       href: "#",
       img: "https://img.freepik.com/free-vector/cryptocurrency-bitcoin-golden-coin-background_1017-31505.jpg?",
-      desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
+      desc: "Players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
     {
       id: 14,
@@ -118,7 +118,7 @@ const Play = () => {
       status: "locked",
       href: "#",
       img: "https://img.freepik.com/free-vector/cryptocurrency-bitcoin-golden-coin-background_1017-31505.jpg?",
-      desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
+      desc: "Players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
     {
       id: 15,
@@ -126,7 +126,7 @@ const Play = () => {
       status: "locked",
       href: "#",
       img: "https://img.freepik.com/free-vector/cryptocurrency-bitcoin-golden-coin-background_1017-31505.jpg?",
-      desc: "In ChainTrail, players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
+      desc: "Players are presented with four images and must guess the word that connects them. The game incorporates elements of blockchain and crypto, with players earning and using tokens as they solve puzzles.",
     },
   ];
 
@@ -143,9 +143,9 @@ const Play = () => {
           <Link
             key={quest.id}
             href={quest.href}
-            className="border border-yellow-900 w-72 rounded-xl pb-3 bg-neutral-800 hover:bg-neutral-950 mb-2 flex flex-col justify-between items-center">
+            className="border border-gray-400 w-72 rounded-xl pb-3 bg-gray-800 hover:bg-gray-950 mb-2 flex flex-col justify-between items-center">
             <img
-              className=" rounded-xl h-36 object-cover w-full "
+              className=" rounded-xl h-28 object-cover w-full "
               src={quest.img}
             />
             <div className="flex justify-between items-center w-full px-4 my-2">
@@ -159,10 +159,10 @@ const Play = () => {
             </div>
 
             <div className="flex justify-between gap-2 items-center text-xs">
-              <span className="border text-yellow-500 border-yellow-500 p-1 rounded">
+              <span className="border border-neutral-950 p-1 rounded">
                 1 unique NFT
               </span>
-              <span className="border border-yellow-500 p-1 rounded text-yellow-500">
+              <span className="border border-neutral-950 p-1 rounded ">
                 10,000 points
               </span>
               <span className="border text-yellow-500 border-yellow-500 p-1 rounded">

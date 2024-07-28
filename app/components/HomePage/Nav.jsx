@@ -28,6 +28,7 @@ const Navbar = () => {
     "/referrals",
     "/collection",
     "/referrals",
+    "/play",
     "/more",
   ];
   const showNavbar = pathname
