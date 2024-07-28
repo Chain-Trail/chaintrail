@@ -36,7 +36,7 @@ const Collection = () => {
             <div className="p-2">
               <p className="font-bold text-sm my-1">ALPHA MIND</p>
               {Object.keys(item).map((key, idx) => (
-                <img loading="lazy" key={idx} src={item[key]} alt={key} />
+                <img loading="lazy" key={idx} src={item[key]} alt={key} className="w-full" />
               ))}
             </div>
           </div>
