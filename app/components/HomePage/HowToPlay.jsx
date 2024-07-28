@@ -69,11 +69,10 @@ const HowToPlay = () => {
       </h2>
 
       <div className="max-w-3xl mx-auto px-4">
-        <div className="bg-neutral-950 rounded-lg shadow-lg overflow-hidden">
+        <div className="bg-neutral-950 lg:py-12 rounded-lg shadow-lg overflow-hidden">
           <div className="p-6 relative">
-            <div
-              className="transition-opacity duration-500">
-              <h1 className="text-2xl font-bold text-center mb-4">
+            <div className="transition-opacity duration-500">
+              <h1 className="text-2xl text-yellow-500 font-bold text-center mb-4">
                 {steps[currentStep].step}
               </h1>
               <div className="flex justify-center mb-4">
@@ -86,24 +85,24 @@ const HowToPlay = () => {
                 />
               </div>
               <div className="text-center mb-4">
-                <h1 className="text-xl font-semibold">
+                <h1 className="text-xl px-0 lg:px-20 text-yellow-500 font-semibold">
                   {steps[currentStep].title}
                 </h1>
               </div>
             </div>
           </div>
-        </div>
         <div className="flex justify-center mt-4 space-x-4">
           <button
             onClick={prevStep}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+            className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded">
             <FaCaretLeft />
           </button>
           <button
             onClick={nextStep}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+            className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded">
             <FaCaretRight />
           </button>
+        </div>
         </div>
       </div>
     </section>
