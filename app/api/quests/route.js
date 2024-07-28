@@ -29,3 +29,14 @@ export async function POST(request) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
+
+export async function GET() {
+  try {
+    await connectDb();
+    const quests = await Quest.find({}, '_id questName');
+    return NextResponse.json(quests);
+  } catch (error) {
+    console.error('Error fetching quests:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
