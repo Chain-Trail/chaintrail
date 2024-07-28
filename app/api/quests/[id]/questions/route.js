@@ -19,13 +19,20 @@ export async function POST(request, { params }) {
       return NextResponse.json({ error: 'Quest not found' }, { status: 404 });
     }
 
-    quest.questQuestions.push(body);
-    await quest.save();
-    console.log("Question added to quest:", quest);
+    // Validate the incoming question data
+    if (!body.questImage1 || !body.questImage2 || !body.questImage3 || !body.questImage4 || !body.questHints || !Array.isArray(body.questPossibleAnswers)) {
+      return NextResponse.json({ error: 'Invalid question data' }, { status: 400 });
+    }
 
-    return NextResponse.json({ message: 'Question added successfully' }, { status: 201 });
+    // Add the new question to the quest's questQuestions array
+    quest.questQuestions.push(body);
+    const updatedQuest = await quest.save();
+    console.log("Question added to quest:", updatedQuest);
+
+    return NextResponse.json({ message: 'Question added successfully', quest: updatedQuest }, { status: 201 });
   } catch (error) {
     console.error("Error adding question to quest:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
+
