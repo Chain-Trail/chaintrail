@@ -1,5 +1,4 @@
 import { IoCopy } from "react-icons/io5";
-import Nfts from "./Nfts";
 import SideNav from "../components/Reusable/SideNav";
 
 const Referrals = () => {
@@ -94,7 +93,6 @@ const Referrals = () => {
           </div>
         </div>
       </div>
-      <Nfts />
     </section>
   );
 };
