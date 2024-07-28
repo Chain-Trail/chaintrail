@@ -14,8 +14,8 @@ const questQuestionSchema = new mongoose.Schema({
 const questSchema = new mongoose.Schema({
   questName: { type: String, required: true },
   questImage: { type: String, required: true },
-  questStatus: { type: String, required: true },
-  questQuestions: { type: questQuestionSchema, required: false },
+  questStatus: { type: String, required: true },  
+  questQuestions: { type: [questQuestionSchema], required: false },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });
