@@ -33,7 +33,7 @@ export async function POST(request) {
 export async function GET() {
   try {
     await connectDb();
-    const quests = await Quest.find({}, '_id questName');
+    const quests = await Quest.find({});
     return NextResponse.json(quests);
   } catch (error) {
     console.error('Error fetching quests:', error);
