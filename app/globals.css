@@ -9,6 +9,6 @@ body {
 input[type=file]{
     @apply my-2 ;
 }
-input{
+input, select, textarea{
    @apply text-black
 }
