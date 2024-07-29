@@ -1,7 +1,7 @@
 // app/components/CreateQuestQuestion.js
 "use client";
 import { useState, useEffect } from "react";
-
+import SideNav from "@/app/components/Reusable/SideNav";
 export default function CreateQuestQuestion() {
   const [quests, setQuests] = useState([]);
   const [selectedQuestId, setSelectedQuestId] = useState("");
@@ -83,6 +83,9 @@ export default function CreateQuestQuestion() {
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-gray-100 rounded-lg shadow-xl">
+      <div className="flex justify-end mr-4 mt-6">
+        <SideNav />
+      </div>
       <h2 className="text-2xl font-bold mb-6 text-yellow-600">
         Add Quest Question
       </h2>
