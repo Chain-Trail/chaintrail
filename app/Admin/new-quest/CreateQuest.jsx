@@ -1,6 +1,7 @@
 // /CreateQuest.js
 'use client';
 import { useState } from 'react';
+import SideNav from "@/app/components/Reusable/SideNav";
 
 export default function CreateQuest() {
   const [quest, setQuest] = useState({
@@ -36,6 +37,9 @@ export default function CreateQuest() {
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-gray-100 rounded-lg shadow-xl">
+      <div className="flex justify-end mr-4 mt-6">
+        <SideNav />
+      </div>
       <h2 className="text-2xl font-bold mb-6 text-yellow-600">Create New Quest</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
