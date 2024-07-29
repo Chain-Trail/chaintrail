@@ -65,7 +65,7 @@ const Hero = () => {
           </Button>
         ) : (
           <Button
-            href="https://t.me/TWAczbot" // Replace with your actual login page URL
+            href="https://t.me/ChainTrailBot" // Replace with your actual login page URL
             className="flex mx-auto text-sm gap-2 bg-black hover:bg-neutral-950 outline">
             Play on
             <span className="animate-pulse text-xl">
