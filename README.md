@@ -17,9 +17,9 @@
 - **Okeke Chinedu Emmanuel**: Frontend Developer
 
 
-### Slides
+### Live Demo Video
 
-[https://www.canva.com/design/DAGIphRBK3k/h8LmKK7pDe3-WFmsfppDXw/edit?utm_content=DAGIphRBK3k&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton]
+[https://youtu.be/oJWfHR9Bnnw?si=VjXaygxgtCpjJ5EG]
 
 ## Table of Contents
 
